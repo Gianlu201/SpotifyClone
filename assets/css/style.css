@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white !important;
+}
+
+main {
+    background-color: #212121;
+}
+
+#searchList li {
+list-style-type: none;
+}
+
+#profile {
+    width: 25px;
+}
+
+.collage{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+.collage img {
+    width: 50%;
+}
+
+#mostLiked .card{
+    max-width: 130px;
+}
+.card-img-top {
+    max-width: 120px;
+    margin: 0 auto;
+}
+
+.friends {
+width: 30px;
+}
+
+header {
+    height: 100vh;
+}
