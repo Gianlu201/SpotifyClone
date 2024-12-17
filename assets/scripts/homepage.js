@@ -245,7 +245,6 @@ function printList(list, target) {
   }
 }
 
-// FIXME
 function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
   musicSource.src = link;
