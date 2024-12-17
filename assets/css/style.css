@@ -110,3 +110,59 @@ header nav li i {
     bottom: 0px;
   }
 }
+
+
+#player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.audio-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.audio-container img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.audio-info {
+  display: flex;
+  white-space: nowrap;
+  flex-direction: column;
+}
+
+.audio-info h4,
+.audio-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.audio-info h4 {
+  font-weight: bold;
+}
+
+audio {
+  outline: none;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  #player {
+    bottom: 90px; /* Sposta la barra più in alto */
+  }
+}
