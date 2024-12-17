@@ -1,3 +1,70 @@
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Light.otf) format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-LightItalic.otf) format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Bold.otf) format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BookItalic.otf) format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Medium.otf) format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-MediumItalic.otf) format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-MediumItalic.otf) format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Bold.otf) format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BoldItalic.otf) format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Black.otf) format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BlackItalic.otf) format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +75,7 @@
 body {
   overflow-x: hidden;
   background-color: black;
+  font-family: 'Circular', sans-serif;
 }
 
 a:link,
@@ -30,6 +98,11 @@ header nav li i {
   font-size: 30px;
 }
 
+.navSecondSection {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #d3d3d333;
+}
+
 #searchList {
   max-height: 50vh !important;
   overflow-y: scroll;
@@ -39,8 +112,23 @@ header nav li i {
   list-style-type: none;
 }
 
-#profile {
+.arrow {
+  padding: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: rgba(0, 0, 0, 0.308);
+  border-radius: 50px;
+}
+
+.profile {
+  background-color: rgba(0, 0, 0, 0.555);
+  border-radius: 50px;
+  padding-right: 10px;
+}
+
+#profileImg {
   width: 25px;
+  border-radius: 50px;
 }
 
 .collage {
@@ -107,5 +195,122 @@ header nav li i {
 
   #player {
     bottom: 0px;
+  }
+}
+
+#player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.audio-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.audio-container img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.audio-info {
+  display: flex;
+  white-space: nowrap;
+  flex-direction: column;
+}
+
+.audio-info h4,
+.audio-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.audio-info h4 {
+  font-weight: bold;
+}
+
+audio {
+  outline: none;
+  width: 100%;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #e9e9e9 !important;
+}
+
+.input-container input {
+  width: 100%;
+  padding-left: 35px; /* Aggiungi spazio per l'icona */
+  height: 40px;
+  border: 1px solid #2a2a2a;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #b3b3b3;
+}
+
+.category-card {
+  height: 120px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card img {
+  position: absolute;
+  bottom: -5px;
+  right: -20px;
+  width: 100px;
+  height: auto;
+  border-radius: 15px;
+  transform: rotate(30deg);
+}
+
+@media screen and (max-width: 768px) {
+  #player {
+    bottom: 90px; /* Sposta la barra più in alto */
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 900px; /* Riduci larghezza su XL */
+  }
+
+  .category-card img {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
+    height: auto;
+    border-radius: 15px;
+    transform: none;
   }
 }
