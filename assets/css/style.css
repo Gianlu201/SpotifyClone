@@ -4,60 +4,70 @@
   font-weight: 300;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-LightItalic.otf) format('opentype');
   font-weight: 300;
   font-style: italic;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-Bold.otf) format('opentype');
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-BookItalic.otf) format('opentype');
   font-weight: 400;
   font-style: italic;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-Medium.otf) format('opentype');
   font-weight: 500;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-MediumItalic.otf) format('opentype');
   font-weight: 500;
   font-style: italic;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-MediumItalic.otf) format('opentype');
   font-weight: 500;
   font-style: italic;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-Bold.otf) format('opentype');
   font-weight: 700;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-BoldItalic.otf) format('opentype');
   font-weight: 700;
   font-style: italic;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-Black.otf) format('opentype');
   font-weight: 900;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(../fonts/CircularStd-BlackItalic.otf) format('opentype');
@@ -85,7 +95,17 @@ a:visited {
 
 main {
   background-color: #212121;
+  position: relative;
 }
+
+#imgauthor {
+  position: absolute;
+  height: 300px;
+  top:0;
+  left:0;
+z-index:-1;
+}
+
 
 header {
   position: fixed;
@@ -148,6 +168,7 @@ header nav li i {
 #goodFeelings .card {
   max-width: 170px;
 }
+
 .card-img-top {
   max-width: 160px;
   margin: 0 auto;
@@ -262,7 +283,8 @@ audio {
 
 .input-container input {
   width: 100%;
-  padding-left: 35px; /* Aggiungi spazio per l'icona */
+  padding-left: 35px;
+  /* Aggiungi spazio per l'icona */
   height: 40px;
   border: 1px solid #2a2a2a;
   border-radius: 5px;
@@ -299,13 +321,15 @@ audio {
 
 @media screen and (max-width: 768px) {
   #player {
-    bottom: 90px; /* Sposta la barra più in alto */
+    bottom: 90px;
+    /* Sposta la barra più in alto */
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 900px; /* Riduci larghezza su XL */
+    max-width: 900px;
+    /* Riduci larghezza su XL */
   }
 
   .category-card img {
