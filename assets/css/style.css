@@ -106,6 +106,10 @@ main {
 z-index:-1;
 }
 
+.author{
+  font-size: smaller;
+}
+
 
 header {
   position: fixed;
