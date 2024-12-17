@@ -293,6 +293,10 @@ audio {
   transform: rotate(30deg);
 }
 
+.albumTitle {
+  border-bottom: 1px solid lightgrey;
+}
+
 @media screen and (max-width: 768px) {
   #player {
     bottom: 90px; /* Sposta la barra più in alto */
