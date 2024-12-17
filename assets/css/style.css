@@ -1,3 +1,70 @@
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Light.otf) format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-LightItalic.otf) format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Bold.otf) format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BookItalic.otf) format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Medium.otf) format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-MediumItalic.otf) format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-MediumItalic.otf) format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Bold.otf) format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BoldItalic.otf) format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-Black.otf) format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circular';
+  src: url(../fonts/CircularStd-BlackItalic.otf) format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +75,12 @@
 body {
   overflow-x: hidden;
   background-color: black;
+  font-family: 'Circular', sans-serif;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
 }
 
 main {
@@ -69,12 +142,26 @@ header nav li i {
   width: 50%;
 }
 
-#mostLiked .card {
-  max-width: 130px;
+#mostLiked .card,
+#todayHits .card,
+#mood .card,
+#goodFeelings .card {
+  max-width: 170px;
 }
 .card-img-top {
-  max-width: 120px;
+  max-width: 160px;
   margin: 0 auto;
+}
+
+#mostLiked .cart-title,
+#todayHits .cart-title,
+#mood .cart-title,
+#goodFeelings .cart-title {
+  display: -webkit-box;
+  -webkit-box-direction: vertical;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .friends {
@@ -110,7 +197,6 @@ header nav li i {
     bottom: 0px;
   }
 }
-
 
 #player {
   position: fixed;
@@ -161,8 +247,70 @@ audio {
   width: 100%;
 }
 
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #e9e9e9 !important;
+}
+
+.input-container input {
+  width: 100%;
+  padding-left: 35px; /* Aggiungi spazio per l'icona */
+  height: 40px;
+  border: 1px solid #2a2a2a;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: #b3b3b3;
+}
+
+.category-card {
+  height: 120px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card img {
+  position: absolute;
+  bottom: -5px;
+  right: -20px;
+  width: 100px;
+  height: auto;
+  border-radius: 15px;
+  transform: rotate(30deg);
+}
+
 @media screen and (max-width: 768px) {
   #player {
     bottom: 90px; /* Sposta la barra più in alto */
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 900px; /* Riduci larghezza su XL */
+  }
+
+  .category-card img {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
+    height: auto;
+    border-radius: 15px;
+    transform: none;
   }
 }
