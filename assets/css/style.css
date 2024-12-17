@@ -10,6 +10,11 @@ body {
   background-color: black;
 }
 
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
 main {
   background-color: #212121;
 }
@@ -49,12 +54,26 @@ header nav li i {
   width: 50%;
 }
 
-#mostLiked .card {
-  max-width: 130px;
+#mostLiked .card,
+#todayHits .card,
+#mood .card,
+#goodFeelings .card {
+  max-width: 170px;
 }
 .card-img-top {
-  max-width: 120px;
+  max-width: 160px;
   margin: 0 auto;
+}
+
+#mostLiked .cart-title,
+#todayHits .cart-title,
+#mood .cart-title,
+#goodFeelings .cart-title {
+  display: -webkit-box;
+  -webkit-box-direction: vertical;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .friends {
