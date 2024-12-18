@@ -173,43 +173,54 @@ function printSuggests(list) {
       'col-lg-4',
       'd-flex',
       'align-items-center',
+      'position-relative', 
       'mb-3',
       'me-3', 
       'bg-dark',
       'px-3'
     );
+  
     newCol.style.width = 'calc(33.333% - 20px)';
-
+    
     const newDiv = document.createElement('div');
     newDiv.classList.add('me-2');
+    
     const newTitle = document.createElement('h6');
-
+  
     if (i % 2 != 0) {
       newDiv.classList.add('collage');
       for (let j = 0; j < 4; j++) {
         const newImg = document.createElement('img');
         newImg.src = `assets/imgs/main/image-${10 + i + j}.jpg`;
-
         newDiv.appendChild(newImg);
-
         newTitle.innerText =
           collageTitles[Math.floor(Math.random() * collageTitles.length)];
       }
     } else {
       const newImg = document.createElement('img');
       newImg.src = list[i + 1].album.cover_small;
-
       newDiv.appendChild(newImg);
-
       newTitle.innerText = list[i + 1].album.title;
-      
     }
-
+  
+    // btn Play
+    const playButton = document.createElement('button');
+    playButton.classList.add('btn', 'btn-success', 'play-button');
+    playButton.innerHTML = `<i class="bi bi-play-fill"></i>`; 
+    playButton.setAttribute(
+      'onclick',
+      `setPlayer("${list[i + 7].preview}", "${list[i + 7].title}", "${
+        list[i + 7].artist.name
+      }", "${list[i + 7].album.cover_small}")`
+    );
+  
     newCol.appendChild(newDiv);
     newCol.appendChild(newTitle);
-
+    newCol.appendChild(playButton);
+  
     suggestsBox.appendChild(newCol);
   }
+    
 }
 
 function printList(list, target) {
@@ -217,7 +228,7 @@ function printList(list, target) {
 
   for (let i = 0; i < 5; i++) {
     const newCard = document.createElement('div');
-    newCard.classList.add('card', 'bg-dark');
+    newCard.classList.add('card', 'bg-dark', 'position-relative'); 
 
     const newAImg = document.createElement('a');
     newAImg.href = `album.html?id=${list[i + 8].album.id}`;
@@ -232,12 +243,6 @@ function printList(list, target) {
     const newTitle = document.createElement('p');
     newTitle.classList.add('cart-title', 'fs-6');
     newTitle.innerText = list[i + 8].title;
-    newTitle.setAttribute(
-      'onclick',
-      `setPlayer("${list[i + 8].preview}", "${list[i + 8].title}", "${
-        list[i + 8].artist.name
-      }", "${list[i + 8].album.cover_small}")`
-    );
 
     newTitle.classList.add('cart-title', 'fs-6');
 
@@ -248,6 +253,18 @@ function printList(list, target) {
     newP.classList.add('card-text');
     newP.innerText = list[i + 8].artist.name;
 
+    // btn Play
+    const playButton = document.createElement('button');
+    playButton.classList.add('btn', 'btn-success', 'play2-button');
+    playButton.innerHTML = `<i class="bi bi-play-fill"></i>`; // Icona di play
+    playButton.setAttribute(
+      'onclick',
+      `setPlayer("${list[i + 8].preview}", "${list[i + 8].title}", "${
+        list[i + 8].artist.name
+      }", "${list[i + 8].album.cover_small}")`
+    );
+
+
     newAImg.appendChild(newImg);
     newCard.appendChild(newAImg);
     newBody.appendChild(newTitle);
@@ -255,9 +272,12 @@ function printList(list, target) {
     newBody.appendChild(newAArtist);
     newCard.appendChild(newBody);
 
+    newCard.appendChild(playButton);
+
     target.appendChild(newCard);
   }
 }
+
 
 function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
