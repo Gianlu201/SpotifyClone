@@ -9,6 +9,8 @@ const artistName = document.getElementById('artistName');
 const showMore = document.getElementById('showMore');
 const btnRandomPlay = document.getElementById('randomPlay');
 
+const btnPlay = document.getElementById('btnPlay');
+
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
 let myArtist;
 let artistTracks = [];
@@ -147,4 +149,25 @@ function setPlayer(link, title, artist, imgUrl) {
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
   document.getElementById('artistName').innerText = artist;
+  setPause();
+}
+
+btnPlay.addEventListener('click', () => {
+  const pause = '<i class="bi bi-pause-fill fs-1"></i>';
+  const play = '<i class="bi bi-play-fill fs-1"></i>';
+  if (btnPlay.innerHTML == play) {
+    document.getElementById('musicSource').play();
+    setPause();
+  } else if (btnPlay.innerHTML == pause) {
+    document.getElementById('musicSource').pause();
+    setPlay();
+  }
+});
+
+function setPlay() {
+  btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
+}
+
+function setPause() {
+  btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
 }

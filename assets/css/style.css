@@ -226,6 +226,17 @@ header nav li i {
   }
 }
 
+/* SECTION PLAYER */
+audio#musicSource {
+  height: 30px;
+  width: 100%;
+}
+
+#btnPlay {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 #player {
   position: fixed;
   bottom: 0;
@@ -268,11 +279,6 @@ header nav li i {
 
 .audio-info h4 {
   font-weight: bold;
-}
-
-audio {
-  outline: none;
-  width: 100%;
 }
 
 .input-container {
@@ -363,14 +369,14 @@ audio {
   background-color: #181818; /* Cambia il colore dei pulsanti mute e fullscreen */
 }
 .custom-audio-player::-webkit-media-controls-timeline-container {
-  background-color: #ffffff; /* Cambia il colore della barra temporale */
+  background-color: red; /* Cambia il colore della barra temporale */
 }
 
 /* homepage cards in js */
 
 .card {
-  background-color: #343a40; 
-  transition: transform 0.3s ease, background-color 0.3s ease; 
+  background-color: #343a40;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 .cart-title {
   /* background dinamico titolo card */
@@ -379,8 +385,8 @@ audio {
 }
 
 .card:hover {
-  background-color: #1d2124; 
-  transform: scale(1.05); 
+  background-color: #1d2124;
+  transform: scale(1.05);
   cursor: pointer;
 }
 .cart-title:hover {
@@ -392,16 +398,17 @@ audio {
 }
 
 .new-col:hover img {
-  transform: scale(1.1); 
-  transition: transform 0.3s ease-in-out; 
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }
 
- .new-col img {
-  transform: scale(1); 
-  transition: transform 0.3s ease-in-out; 
+.new-col img {
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
 }
 
-.play-button {                /* bottone nel buonasera */
+.play-button {
+  /* bottone nel buonasera */
   position: absolute;
   top: 30px;
   right: 10px;
@@ -411,7 +418,7 @@ audio {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1db954; 
+  background-color: #1db954;
   color: white;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -424,9 +431,10 @@ audio {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-.play2-button {     /* bottone nelle card grandi */
-  opacity: 0; 
-  visibility: hidden; 
+.play2-button {
+  /* bottone nelle card grandi */
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -436,22 +444,21 @@ audio {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1db954; 
+  background-color: #1db954;
   color: white;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: opacity 0.3s ease, visibility 0.3s ease,
+    transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .card:hover .play2-button {
-  opacity: 1; 
-  visibility: visible; 
-  transform: scale(1.1); 
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.1);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
-
-
 
 @media screen and (max-width: 768px) {
   #player {
@@ -484,17 +491,17 @@ audio {
 
   .category-card img {
     width: 80px; /* Riduci le dimensioni dell'immagine */
-    height: auto
+    height: auto;
   }
 
   .play2-button {
     top: 90%;
   }
 
-  .play2-button, .play-button {
+  .play2-button,
+  .play-button {
     width: 30px;
     height: 30px;
-    
   }
 }
 
