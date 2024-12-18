@@ -100,16 +100,15 @@ main {
 
 #imgauthor {
   position: absolute;
-  height: 300px;
-  top:0;
-  left:0;
-z-index:-1;
+  height: 330px;
+  top: 0;
+  left: 0;
+  /* z-index: -1; */
 }
 
-.author{
+.author {
   font-size: smaller;
 }
-
 
 header {
   position: fixed;
@@ -349,19 +348,19 @@ audio {
   background-color: #ffffff; /* Cambia il colore della barra temporale */
 }
 
-.cart-title {           /* background dinamico titolo card */
-  color: white; 
+.cart-title {
+  /* background dinamico titolo card */
+  color: white;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .cart-title:hover {
-  color: black; 
-  background-color: rgba(0, 0, 0, 0.2); 
+  color: black;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding: 0.1em;   /* sorta di animazione dell hover */
-  cursor: pointer; 
+  padding: 0.1em; /* sorta di animazione dell hover */
+  cursor: pointer;
 }
-
 
 @media screen and (max-width: 768px) {
   #player {
@@ -385,4 +384,27 @@ audio {
     border-radius: 15px;
     transform: none;
   }
+}
+
+/* #imgtext {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px 0;
+} */
+
+#artistDetails {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.trackTitle,
+#showMore {
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: #181818;
 }
