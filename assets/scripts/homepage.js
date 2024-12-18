@@ -121,6 +121,15 @@ function printBigCard(element) {
   );
   newBtnPlay.innerText = 'Play';
 
+  newBtnPlay.addEventListener('click', () => {    //funzione che fa riprodurre al btn la musica
+    setPlayer(
+      element.preview,           
+      element.title,            
+      element.artist.name,      
+      element.album.cover_small 
+    );
+  });
+
   const newBtnSave = document.createElement('button');
   newBtnSave.type = 'button';
   newBtnSave.classList.add('btn', 'btn-outline-light', 'rounded-5', 'me-3');
@@ -165,9 +174,11 @@ function printSuggests(list) {
       'd-flex',
       'align-items-center',
       'mb-3',
+      'me-3', 
       'bg-dark',
       'px-3'
     );
+    newCol.style.width = 'calc(33.333% - 20px)';
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('me-2');
@@ -191,6 +202,7 @@ function printSuggests(list) {
       newDiv.appendChild(newImg);
 
       newTitle.innerText = list[i + 1].album.title;
+      
     }
 
     newCol.appendChild(newDiv);
@@ -227,6 +239,8 @@ function printList(list, target) {
       }", "${list[i + 8].album.cover_small}")`
     );
 
+    newTitle.classList.add('cart-title', 'fs-6');
+
     const newAArtist = document.createElement('a');
     newAArtist.href = `artistPage.html?id=${list[i + 8].artist.id}`;
 
@@ -254,45 +268,3 @@ function setPlayer(link, title, artist, imgUrl) {
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
   document.getElementById('artistName').innerText = artist;
 }
-
-/* //player
-
-document.addEventListener("DOMContentLoaded", () => {
-  const audio = document.getElementById("audio");
-  const playPauseBtn = document.getElementById("play-pause");
-  const prevBtn = document.getElementById("prev");
-  const nextBtn = document.getElementById("next");
-  const progressBar = document.querySelector(".progress-bar");
-  const progressBarFilled = document.querySelector(".progress-bar-filled");
-
-  let isPlaying = false;
-  let currentTrackIndex = 0;
-
-  //pulsanti
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      audio.pause();
-      playPauseBtn.innerHTML = "&#9654;"; // Play
-    } else {
-      audio.play();
-      playPauseBtn.innerHTML = "&#10073;&#10073;"; // Pausa
-    }
-    isPlaying = !isPlaying;
-  };
-
-  // barra di progresso
-  audio.addEventListener("timeupdate", () => {
-    const progress = (audio.currentTime / audio.duration) * 100;
-    progressBarFilled.style.width = `${progress}%`;
-  });
-
-  // Salta in un punto della traccia cliccando sulla barra
-  progressBar.addEventListener("click", (e) => {
-    const rect = progressBar.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-    const newTime = (clickX / width) * audio.duration;
-    audio.currentTime = newTime;
-  });
-
- */
