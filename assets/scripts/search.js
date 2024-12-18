@@ -24,7 +24,8 @@ async function search(q) {
     const response = await fetch(baseUrl + q);
     const data = await response.json();
     console.log(data);
-    displayResults(data.data);
+    filterTracks(data.data);
+    // displayResults(data.data);
   } catch (error) {
     console.log(error);
   }
@@ -34,6 +35,53 @@ btnSearch.addEventListener('click', load);
 
 function load() {
   filteredSearch();
+}
+
+function filterTracks(tracks) {
+  let myFilter = document.getElementById('filterOption').value;
+  const myTracks = [];
+
+  switch (myFilter) {
+    case 'all':
+    default:
+      displayResults(tracks);
+      break;
+    case 'artist':
+      tracks.forEach((track) => {
+        let key = track.artist.name
+          .toLowerCase()
+          .indexOf(document.getElementById('searchInput').value);
+
+        if (key >= 0) {
+          myTracks.push(track);
+        }
+      });
+      break;
+    case 'album':
+      tracks.forEach((track) => {
+        let key = track.album.title
+          .toLowerCase()
+          .indexOf(document.getElementById('searchInput').value);
+
+        if (key >= 0) {
+          myTracks.push(track);
+        }
+      });
+      break;
+    case 'track':
+      tracks.forEach((track) => {
+        let key = track.title
+          .toLowerCase()
+          .indexOf(document.getElementById('searchInput').value);
+
+        if (key >= 0) {
+          myTracks.push(track);
+        }
+      });
+      break;
+  }
+
+  displayResults(myTracks);
 }
 
 function displayResults(tracks) {
@@ -58,5 +106,3 @@ function displayResults(tracks) {
   titleSfoglia.style.display = 'none';
   sectionSfoglia.style.display = 'none';
 }
-
-
