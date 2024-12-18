@@ -10,6 +10,7 @@ const showMore = document.getElementById('showMore');
 const btnRandomPlay = document.getElementById('randomPlay');
 
 const btnPlay = document.getElementById('btnPlay');
+const btnNext = document.getElementById('btnNext');
 
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
 let myArtist;
@@ -163,6 +164,8 @@ btnPlay.addEventListener('click', () => {
     setPlay();
   }
 });
+
+btnNext.addEventListener('click', playRandomTrack);
 
 function setPlay() {
   btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
