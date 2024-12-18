@@ -153,6 +153,10 @@ header nav li i {
   margin: 0 auto;
 }
 
+.cart-title {
+  cursor: pointer;
+}
+
 #mostLiked .cart-title,
 #todayHits .cart-title,
 #mood .cart-title,
@@ -295,6 +299,28 @@ audio {
 
 .albumTitle {
   border-bottom: 1px solid lightgrey;
+}
+
+.custom-audio-player {
+  width: 50%; /* Adatta il player alla larghezza del contenitore */
+}
+.custom-audio-player::-webkit-media-controls-panel {
+  background-color: #181818; /* Cambia il colore di sfondo del player */
+}
+.custom-audio-player::-webkit-media-controls-play-button,
+.custom-audio-player::-webkit-media-controls-current-time-display,
+.custom-audio-player::-webkit-media-controls-time-remaining-display,
+.custom-audio-player::-webkit-media-controls-timeline,
+.custom-audio-player::-webkit-media-controls-volume-slider {
+  background-color: #181818; /* Cambia il colore dei pulsanti */
+  color: white; /* Cambia il colore del testo e delle icone */
+}
+.custom-audio-player::-webkit-media-controls-mute-button,
+.custom-audio-player::-webkit-media-controls-fullscreen-button {
+  background-color: #181818; /* Cambia il colore dei pulsanti mute e fullscreen */
+}
+.custom-audio-player::-webkit-media-controls-timeline-container {
+  background-color: #ffffff; /* Cambia il colore della barra temporale */
 }
 
 @media screen and (max-width: 768px) {

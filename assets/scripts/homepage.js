@@ -69,7 +69,6 @@ async function searchRequest(URL, reserchKey, list) {
   }
 }
 
-
 function showPage() {
   printBigCard(musicList[0]);
   printSuggests(musicList);
@@ -221,7 +220,12 @@ function printList(list, target) {
     const newTitle = document.createElement('p');
     newTitle.classList.add('cart-title', 'fs-6');
     newTitle.innerText = list[i + 8].title;
-    newTitle.setAttribute('onclick', `setPlayer("${list[i + 8].preview}")`);
+    newTitle.setAttribute(
+      'onclick',
+      `setPlayer("${list[i + 8].preview}", "${list[i + 8].title}", "${
+        list[i + 8].artist.name
+      }", "${list[i + 8].album.cover_small}")`
+    );
 
     const newAArtist = document.createElement('a');
     newAArtist.href = `artistPage.html?id=${list[i + 8].artist.id}`;
@@ -241,15 +245,15 @@ function printList(list, target) {
   }
 }
 
-// FIXME
-function setPlayer(link) {
+function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
-  const newSource = document.createElement('source');
-  newSource.src = link;
-  newSource.type = 'audio/mpeg';
-  musicSource.appendChild(newSource);
-}
+  musicSource.src = link;
+  musicSource.setAttribute('autoplay', 'true');
 
+  document.getElementById('trackImage').src = imgUrl;
+  document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
+  document.getElementById('artistName').innerText = artist;
+}
 
 /* //player
 
