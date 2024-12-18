@@ -353,6 +353,7 @@ audio {
 .card {
   background-color: #343a40; 
   transition: transform 0.3s ease, background-color 0.3s ease; 
+}
 .cart-title {
   /* background dinamico titolo card */
   color: white;
@@ -363,6 +364,7 @@ audio {
   background-color: #1d2124; 
   transform: scale(1.05); 
   cursor: pointer;
+}
 .cart-title:hover {
   color: black;
   background-color: rgba(0, 0, 0, 0.2);
