@@ -100,16 +100,15 @@ main {
 
 #imgauthor {
   position: absolute;
-  height: 300px;
-  top:0;
-  left:0;
-z-index:-1;
+  height: 330px;
+  top: 0;
+  left: 0;
+  /* z-index: -1; */
 }
 
-.author{
+.author {
   font-size: smaller;
 }
-
 
 header {
   position: fixed;
@@ -354,11 +353,21 @@ audio {
 .card {
   background-color: #343a40; 
   transition: transform 0.3s ease, background-color 0.3s ease; 
+.cart-title {
+  /* background dinamico titolo card */
+  color: white;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .card:hover {
   background-color: #1d2124; 
   transform: scale(1.05); 
+  cursor: pointer;
+.cart-title:hover {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 0.1em; /* sorta di animazione dell hover */
   cursor: pointer;
 }
 
@@ -484,4 +493,27 @@ audio {
     border-radius: 15px;
     transform: none;
   }
+}
+
+/* #imgtext {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px 0;
+} */
+
+#artistDetails {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.trackTitle,
+#showMore {
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: #181818;
 }
