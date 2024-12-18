@@ -61,9 +61,10 @@ function printTracks(tracks) {
     newTitle.classList.add('m-1', 'fw-bold');
     newTitle.innerText = tracks[i].title;
 
-    const newArtist = document.createElement('p');
+    const newArtist = document.createElement('a');
     newArtist.classList.add('m-0', 'text-secondary');
     newArtist.innerText = tracks[i].artist.name;
+    newArtist.href = `artistPage.html?id=${tracks[i].artist.id}`;
 
     const newRank = document.createElement('p');
     newRank.classList.add('col-3');
