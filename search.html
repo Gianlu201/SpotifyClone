@@ -372,20 +372,27 @@
       </aside>
     </div>
 
-    <section id="player">
-      <div class="audio-container">
-        <img src="assets/imgs/main/image-1.jpg" />
-        <div class="audio-info">
-          <h4>Prova prova</h4>
-          <p>Nome artista</p>
+    <section id="player" class="d-flex justify-content-between">
+      <div class="left">
+        <div class="audio-container">
+          <img id="trackImage" src="assets/imgs/main/image-1.jpg" />
+          <div class="audio-info">
+            <h4 id="trackName">Prova prova</h4>
+            <p id="artistName">Nome artista</p>
+          </div>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar">
+            <div class="progress-bar-filled"></div>
+          </div>
         </div>
       </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar">
-          <div class="progress-bar-filled"></div>
-        </div>
+
+      <audio id="musicSource" class="custom-audio-player" controls></audio>
+
+      <div class="right">
+        <span>volume</span>
       </div>
-      <audio id="audio" controls></audio>
     </section>
 
     <script
