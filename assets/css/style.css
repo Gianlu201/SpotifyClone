@@ -261,8 +261,8 @@ audio {
 }
 
 .input-container input {
-  width: calc(100% - 150px); /* Larghezza ridotta per ospitare il select */
-  padding-left: 35px; /* Spazio per l'icona */
+  width: calc(100% - 150px); 
+  padding-left: 35px; 
   height: 40px;
   border: 1px solid #2a2a2a;
   border-radius: 10px;
