@@ -126,13 +126,16 @@ header nav li i {
   border-bottom: 1px solid #d3d3d333;
 }
 
-#searchList {
-  max-height: 50vh !important;
+#searchedList {
+  max-height: 40vh !important;
   overflow-y: scroll;
 }
 
-#searchList li {
+#searchedList li {
   list-style-type: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 0.8em;
 }
 
 .arrow {
