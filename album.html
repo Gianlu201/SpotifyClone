@@ -53,7 +53,11 @@
                 </div>
               </li>
               <li class="nav-item text-center">
-                <a class="nav-link active p-1" aria-current="page" href="#">
+                <a
+                  class="nav-link active p-1"
+                  aria-current="page"
+                  href="homepage.html"
+                >
                   <i
                     class="bi bi-house-door-fill mx-2 d-block d-lg-inline mb-0"
                   ></i>
@@ -224,7 +228,7 @@
         </div>
       </header>
 
-      <main class="col-lg-8 order-0">
+      <main class="col-lg-8 order-0 mb-5">
         <div class="container pb-3">
           <div class="d-flex justify-content-between my-3">
             <div>
@@ -255,23 +259,25 @@
             </div>
           </div>
           <div class="d-flex bg-transparent">
-            <img src="assets/imgs/main/image-1.jpg" height="160px" alt="..." id="albumImage"/>
+            <img src="" height="160px" id="albumImage" />
             <div class="card-body ps-lg-3 pt-lg-4">
               <p class="h6 fs-6">ALBUM</p>
-              <h5 class="card-title h1 fw-bolder" id="albumTitle">Gioventù Bruciata</h5>
-              <a href="#" class="btn btn-transparent ps-0">
+              <h5 class="card-title h1 fw-bolder" id="albumTitle">
+                <!-- Gioventù Bruciata -->
+              </h5>
+              <a id="artistLink" href="#" class="btn btn-transparent ps-0">
                 <img
+                  id="albumArtistImage"
                   src="assets/imgs/main/image-12.jpg"
                   width="20px"
                   class="rounded-circle pe-1"
-                  id="artistImage"
                 />
-                <span id="artistName">Pinguini Tattici Nucleari</span>
+                <span id="albumArtist"><!-- Pinguini Tattici Nucleari --></span>
               </a>
             </div>
           </div>
         </div>
-        <div class="container bg-transparent">
+        <div class="container bg-transparent mb-5">
           <div class="d-flex pt-4 pb-4">
             <button type="button" class="btn btn-success rounded-circle me-3">
               <i class="bi bi-play-fill"></i>
@@ -302,123 +308,172 @@
           </div>
           <div class="mx-1">
             <div class="d-flex row mb-2 albumTitle">
-                
               <p class="px-3 col-1">#</p>
               <p class="col-6">TITOLO</p>
               <p class="col-3">RIPRODUZIONI</p>
               <p class="pe-4 col-2"><i class="bi bi-clock"></i></p>
             </div>
-            <div id="trackList"></div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
-            </div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
-            </div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
-            </div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
-            </div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
-            </div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
-            </div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
-            </div>
-            <div class="row">
-              <p class="px-3 col-1 align-content-center mb-0">1</p>
-              <div class="col-6">
-                <p class="m-1 fw-bold">Gioventù Bruciata</p>
-                <p class="m-0 text-secondary">Artista che canta</p>
-              </div>
-              <p class="col-3">300.000</p>
-              <p class="pe-4 col-2">3:25</p>
+            <div id="trackList">
+              <!-- <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div>
+                        <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div>
+                        <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div>
+                        <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div>
+                        <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div>
+                        <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div>
+                        <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div>
+                        <div class="row">
+                            <p class="px-3 col-1 align-content-center mb-0">1</p>
+                            <div class="col-6">
+                                <p class="m-1 fw-bold">Gioventù Bruciata</p>
+                                <p class="m-0 text-secondary">Artista che canta</p>
+                            </div>
+                            <p class="col-3">300.000</p>
+                            <p class="pe-4 col-2">3:25</p>
+                        </div> -->
             </div>
           </div>
         </div>
       </main>
+      <aside class="col-lg-2 bg-black d-none d-lg-block">
+        <div class="d-flex justify-content-between py-lg-4">
+          <h3 class="h6">Attività amici</h3>
+          <div>
+            <i class="bi bi-person-add"></i>
+            <i class="bi bi-x-lg"></i>
+          </div>
+        </div>
+        <div class="card bg-black">
+          <div class="d-flex">
+            <div class="me-lg-3">
+              <img src="assets/imgs/pngwing.com.png" alt="" class="friends" />
+            </div>
+            <div>
+              <h6>Gianluca Di Diego</h6>
+              <span>In camera</span> •
+              <span>Yumi Zouma </span>
+              <p><i class="bi bi-disc"></i> EP III</p>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-black">
+          <div class="d-flex">
+            <div class="me-lg-3">
+              <img src="assets/imgs/pngwing.com.png" alt="" class="friends" />
+            </div>
+            <div>
+              <h6>Daniele Guicciardi</h6>
+              <span>Life is a Highway</span> •
+              <span>Rascal Flatts</span>
+              <p><i class="bi bi-disc"></i> Cars(Soundtrack)</p>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-black">
+          <div class="d-flex">
+            <div class="me-lg-3">
+              <img src="assets/imgs/pngwing.com.png" alt="" class="friends" />
+            </div>
+            <div>
+              <h6>Matilde Petrilli</h6>
+              <span>New Kings</span> •
+              <span>Sleeping Wolf</span>
+              <p><i class="bi bi-disc"></i> Twint Badass Mood</p>
+            </div>
+          </div>
+        </div>
+        <div class="card bg-black">
+          <div class="d-flex">
+            <div class="me-lg-3">
+              <img src="assets/imgs/pngwing.com.png" alt="" class="friends" />
+            </div>
+            <div>
+              <h6>Sachidu Fernando</h6>
+              <span>DragonBall GT</span> •
+              <span>G.Vanni</span>
+              <p><i class="bi bi-disc"></i> Crilin Morirà</p>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
 
-    <aside class="col-lg-2 bg-black d-none d-lg-block">
-      <div class="d-flex justify-content-between">
-        <h3>Attività amici</h3>
-        <div>
-          <i class="bi bi-person-add"></i>
-          <i class="bi bi-x-lg"></i>
+    <section id="player" class="d-flex justify-content-between">
+      <div class="left">
+        <div class="audio-container">
+          <img id="trackImage" src="assets/imgs/main/image-1.jpg" />
+          <div class="audio-info">
+            <h4 id="trackName">Prova prova</h4>
+            <p id="artistName">Nome artista</p>
+          </div>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar">
+            <div class="progress-bar-filled"></div>
+          </div>
         </div>
       </div>
-      <div class="card bg-black">
-        <img src="assets/imgs/pngwing.com.png" alt="" class="friends" />
-        <div class="d-inline-block">
-          <h6>Gianluca Di Diego</h6>
-          <span>In camera</span>
-          <span>titolo canzone</span>
-          <a href="homepage.html">link homepage</a>
-        </div>
-      </div>
-    </aside>
 
-    <section id="player">
-      <div class="audio-container">
-        <img src="assets/imgs/main/image-1.jpg" />
-        <div class="audio-info">
-          <h4>Prova prova</h4>
-          <p>Nome artista</p>
-        </div>
+      <audio id="musicSource" class="custom-audio-player" controls></audio>
+
+      <div class="right">
+        <span>volume</span>
       </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar">
-          <div class="progress-bar-filled"></div>
-        </div>
-      </div>
-      <audio id="audio" controls></audio>
     </section>
 
     <script
