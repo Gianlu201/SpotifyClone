@@ -239,6 +239,8 @@ function printList(list, target) {
       }", "${list[i + 8].album.cover_small}")`
     );
 
+    newTitle.classList.add('cart-title', 'fs-6');
+
     const newAArtist = document.createElement('a');
     newAArtist.href = `artistPage.html?id=${list[i + 8].artist.id}`;
 
