@@ -230,6 +230,10 @@ audio#musicSource {
   z-index: 1000;
 }
 
+.buttonPlayBigCard {
+  z-index: 1000000;
+}
+
 .audio-container {
   display: flex;
   align-items: center;
@@ -466,7 +470,10 @@ audio#musicSource {
 
 
 .trackTitle,
-#showMore {
+#showMore,
+.bi-heart,
+.bi-heart-fill,
+.track-title {
   cursor: pointer;
 }
 
@@ -483,11 +490,6 @@ audio#musicSource {
   .card {
     width: 100%;
     margin-bottom: 15px; /* Spazio tra le card */
-  }
-
-  .card-img-top {
-    max-width: 100%;
-    height: auto; /* Adatta l'immagine alla larghezza della card */
   }
 
   /* Se vuoi ridurre il numero di colonne a 1 per schermi più piccoli, puoi usare una grid o flexbox */
@@ -571,9 +573,9 @@ audio#musicSource {
   #player {
     bottom: 0px;
   }
-}
 
-@media screen and (min-width: 1200px) {
+
+@media (min-width: 1200px) {
   .container {
     max-width: 900px;
     /* Riduci larghezza su XL */
@@ -589,6 +591,7 @@ audio#musicSource {
     transform: none;
   }
 }
+
 
 #resultContainer .category-card {
   background-color: #2a2a2a;
@@ -645,4 +648,5 @@ audio#musicSource {
   .card-body a {
     font-size: 1.5vw;
   }
+
 }

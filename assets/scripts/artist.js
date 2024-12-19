@@ -16,12 +16,14 @@ const myHistory = [];
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
 let myArtist;
 let artistTracks = [];
+let myFavTracks = [];
 
 document.addEventListener('load', init());
 
 btnRandomPlay.addEventListener('click', playRandomTrack);
 
 function init() {
+  getMyFav();
   getArtist('artist', URL, artistId);
   getFromLocalStorage();
 }
@@ -44,14 +46,36 @@ async function getArtist(str, url, id) {
   }
 }
 
+class FavTrack {
+  constructor(
+    _title,
+    _artist,
+    _album,
+    _duration,
+    _rank,
+    _artist_id,
+    _album_cover,
+    _album_id,
+    _preview
+  ) {
+    this.title = _title;
+    this.artist = _artist;
+    this.album = _album;
+    this.duration = _duration;
+    this.rank = _rank;
+    this.artist_id = _artist_id;
+    this.album_cover = _album_cover;
+    this.album_id = _album_id;
+    this.preview = _preview;
+  }
+}
+
 function loadPage() {
   showDetails();
   showTracks();
 }
 
 function showDetails() {
-  console.log('ciao');
-
   nameartist.innerText = myArtist.name;
   numeroAscolti.innerText = myArtist.nb_fan;
   artistDetails.style.backgroundImage = `url("${myArtist.picture_xl}")`;
@@ -60,7 +84,22 @@ function showDetails() {
 }
 
 function showTracks() {
+  let taken;
+
   for (let i = 0; i < 30; i++) {
+    taken = false;
+    let myId;
+    myFavTracks.forEach((track) => {
+      if (
+        track.title == artistTracks[i].title_short &&
+        track.artist_id == artistTracks[i].artist.id &&
+        track.album_id == artistTracks[i].album.id
+      ) {
+        taken = true;
+        myId = track.id;
+      }
+    });
+
     const newRow = document.createElement('div');
     newRow.classList.add('row', 'p-2');
 
@@ -84,8 +123,23 @@ function showTracks() {
       `setPlayer("${artistTracks[i].preview}", "${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.cover_small}")`
     );
 
+    const newHeartDiv = document.createElement('div');
+    newHeartDiv.classList.add('col-1');
+
+    const heart = document.createElement('span');
+    if (taken) {
+      heart.innerHTML = `<i class="bi bi-heart-fill text-success"></i>`;
+      heart.setAttribute('onclick', `removeLike(${myId}, ${i})`);
+    } else {
+      heart.innerHTML = `<i class="bi bi-heart"></i>`;
+      heart.setAttribute(
+        'onclick',
+        `addLike("${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.title}", "${artistTracks[i].duration}", "${artistTracks[i].rank}", "${artistTracks[i].artist.id}", "${artistTracks[i].album.cover_small}", "${artistTracks[i].album.id}", "${artistTracks[i].preview}", ${i})`
+      );
+    }
+
     const newListeners = document.createElement('span');
-    newListeners.classList.add('col-3', 'text-secondary', 'text-end');
+    newListeners.classList.add('col-2', 'text-secondary', 'text-end');
     newListeners.innerText = artistTracks[i].rank;
 
     const newTime = document.createElement('span');
@@ -96,6 +150,8 @@ function showTracks() {
     newRow.appendChild(newNum);
     newRow.appendChild(newDiv);
     newRow.appendChild(newTitle);
+    newHeartDiv.appendChild(heart);
+    newRow.appendChild(newHeartDiv);
     newRow.appendChild(newListeners);
     newRow.appendChild(newTime);
 
@@ -202,4 +258,100 @@ function getFromLocalStorage() {
 
 function updateLocalStorage() {
   localStorage.setItem('history', JSON.stringify(myHistory));
+}
+
+function addLike(
+  title,
+  artist,
+  album,
+  duration,
+  rank,
+  artistId,
+  albumCover,
+  albumId,
+  preview,
+  index
+) {
+  const myDuration = parseInt(duration);
+  const myRank = parseInt(rank);
+  const myArtistId = parseInt(artistId);
+  const myAlbumId = parseInt(albumId);
+
+  const myFavTrack = new FavTrack(
+    title,
+    artist,
+    album,
+    myDuration,
+    myRank,
+    myArtistId,
+    albumCover,
+    myAlbumId,
+    preview
+  );
+
+  setFilledHearth(index);
+
+  addToLiked(myFavTrack);
+}
+
+async function addToLiked(obj) {
+  try {
+    const response = await fetch(
+      'https://6763e34117ec5852caea54ca.mockapi.io/playlist',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset= UTF-8',
+        },
+        body: JSON.stringify(obj),
+      }
+    );
+    const data = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function setFilledHearth(index) {
+  const myRow = document.querySelector(
+    `#tracksList .row:nth-of-type(${index + 1}) div span i`
+  );
+  myRow.classList.remove('bi-heart');
+  myRow.classList.add('bi-heart-fill', 'text-success');
+}
+
+function setEmptyHearth(index) {
+  const myRow = document.querySelector(
+    `#tracksList .row:nth-of-type(${index + 1}) div span i`
+  );
+  myRow.classList.remove('bi-heart-fill', 'text-success');
+  myRow.classList.add('bi-heart');
+}
+
+async function getMyFav() {
+  try {
+    const response = await fetch(
+      'https://6763e34117ec5852caea54ca.mockapi.io/playlist'
+    );
+    const data = await response.json();
+    myFavTracks = data;
+    console.log(myFavTracks);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function removeLike(id, index) {
+  console.log(id);
+  try {
+    const response = await fetch(
+      'https://6763e34117ec5852caea54ca.mockapi.io/playlist/' + id,
+      {
+        method: 'DELETE',
+      }
+    );
+    setEmptyHearth(index);
+  } catch (error) {
+    console.log(error);
+  }
 }
