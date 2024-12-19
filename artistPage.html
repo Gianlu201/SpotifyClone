@@ -488,7 +488,27 @@
         </div>
       </div>
 
-      <audio id="musicSource" class="custom-audio-player" controls></audio>
+      <div id="playerBox" class="w-25">
+        <div id="buttonsBox" class="d-flex justify-content-center">
+          <button type="button" id="btnShuffle" class="btn">
+            <i class="bi bi-shuffle fs-5"></i>
+          </button>
+          <button type="button" id="btnBack" class="btn">
+            <i class="bi bi-skip-start-fill fs-5"></i>
+          </button>
+          <button type="button" id="btnPlay" class="btn">
+            <i class="bi bi-play-fill fs-1"></i>
+            <!-- <i class="bi bi-pause-fill fs-1"></i> -->
+          </button>
+          <button type="button" id="btnNext" class="btn">
+            <i class="bi bi-skip-end-fill fs-5"></i>
+          </button>
+          <button type="button" id="btnRepeat" class="btn">
+            <i class="bi bi-repeat fs-5"></i>
+          </button>
+        </div>
+        <audio id="musicSource" class="custom-audio-player" controls></audio>
+      </div>
 
       <div class="right">
         <!-- se lo tolgo il player va a sinistra ????? -->
