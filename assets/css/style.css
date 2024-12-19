@@ -372,6 +372,10 @@ audio {
   background-color: #2B2B2B;
 }
 
+.cardMini:hover {
+  border: 0.5px solid rgba(0, 0, 0, 0.356);
+}
+
 .cart-title:hover {
   background-color: #2B2B2B;
   border-radius: 10px;
@@ -436,7 +440,8 @@ audio {
   opacity: 1; 
   visibility: visible; 
   transform: scale(1.1); 
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+   
 }
 
 .card-img-top {
