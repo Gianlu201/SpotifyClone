@@ -304,8 +304,7 @@ audio#musicSource {
   border-color: #b3b3b3;
 }
 
-.category-card,
-.custom-card {
+.category-card {
   height: 120px;
   border-radius: 10px;
   display: flex;
@@ -316,10 +315,6 @@ audio#musicSource {
   font-size: 1.2rem;
   position: relative;
   overflow: hidden;
-}
-
-.custom-card {
-  background-color: #212529;
 }
 
 .category-card img {
@@ -466,15 +461,13 @@ audio#musicSource {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card-img-top {
-  min-width: 168px;
-}
-
 #artistDetails {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
+
 
 .trackTitle,
 #showMore,
@@ -581,11 +574,6 @@ audio#musicSource {
     bottom: 0px;
   }
 
-  .carouselCard {
-    
-  }
-
-}  
 
 @media (min-width: 1200px) {
   .container {
@@ -604,7 +592,61 @@ audio#musicSource {
   }
 }
 
-/* MOSTLIKE PAGE */
-#mostLikeMain {
-  min-height: 90vh;
+
+#resultContainer .category-card {
+  background-color: #2a2a2a;
+}
+
+#resultContainer .category-card img {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  width: 80px;
+  height: auto;
+  border-radius: 15px;
+  transform: none;
+}
+
+@media screen and (max-width: 767px) {
+  #resultContainer .category-card img {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #resultContainer .category-card img {
+    width: 60px;
+  }
+}
+
+.abc {
+  max-width: 48%;
+}
+
+.card-title,
+.card-body a {
+  font-size: 2vw;
+  overflow: hidden;
+}
+
+@media (max-width: 576px) {
+  .card-title,
+  .card-body a {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 1200px) {
+  .card-title,
+  .card-body a {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-title,
+  .card-body a {
+    font-size: 1.5vw;
+  }
+
 }
