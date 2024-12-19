@@ -51,14 +51,14 @@ function printTracks(tracks) {
     );
 
     const newParagraph = document.createElement('p');
-    newParagraph.classList.add('px-3', 'col-1', 'align-content-center', 'mb-0');
+    newParagraph.classList.add('px-3', 'col-1', 'align-content-center', 'mb-0', 'numberLine');
     newParagraph.innerText = i + 1;
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('col-6');
 
     const newTitle = document.createElement('p');
-    newTitle.classList.add('m-1', 'fw-bold');
+    newTitle.classList.add('m-1', 'fw-bold', 'titleSong');
     newTitle.innerText = tracks[i].title;
 
     const newArtist = document.createElement('a');
@@ -67,11 +67,11 @@ function printTracks(tracks) {
     newArtist.href = `artistPage.html?id=${tracks[i].artist.id}`;
 
     const newRank = document.createElement('p');
-    newRank.classList.add('col-3');
+    newRank.classList.add('col-3', 'numberVisual');
     newRank.innerText = tracks[i].rank;
 
     const newTime = document.createElement('p');
-    newTime.classList.add('col-2', 'pe-4');
+    newTime.classList.add('col-2', 'pe-4', 'numberTime');
     newTime.innerText = getTimeFormat(tracks[i].duration);
 
     newRow.appendChild(newParagraph);
@@ -107,6 +107,6 @@ function setPlayer(link, title, artist, imgUrl) {
   musicSource.setAttribute('autoplay', 'true');
 
   document.getElementById('trackImage').src = imgUrl;
-  document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
+  document.getElementById('trackName').innerText = `${title.slice(0, 20)}...`;
   document.getElementById('artistName').innerText = artist;
 }
