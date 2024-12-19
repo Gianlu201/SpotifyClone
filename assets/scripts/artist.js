@@ -8,6 +8,7 @@ const artistDetails = document.getElementById('artistDetails');
 const artistName = document.getElementById('artistName');
 const showMore = document.getElementById('showMore');
 const btnRandomPlay = document.getElementById('randomPlay');
+const progressBar = document.getElementById('progressBar');
 
 const btnPlay = document.getElementById('btnPlay');
 const btnNext = document.getElementById('btnNext');
@@ -157,10 +158,11 @@ function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
   musicSource.src = link;
   musicSource.setAttribute('autoplay', 'true');
+  playtime();
 
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
-  document.getElementById('artistName').innerText = artist;
+  document.getElementById('nomeArtista').innerHTML = artist;
   setPause();
 
   const myTrack = new Track(link, title, artist, imgUrl);
@@ -171,10 +173,10 @@ function setPlayer(link, title, artist, imgUrl) {
 btnPlay.addEventListener('click', () => {
   const pause = '<i class="bi bi-pause-fill fs-1"></i>';
   const play = '<i class="bi bi-play-fill fs-1"></i>';
-  if (btnPlay.innerHTML == play) {
+  if (btnPlay.classList.contains('bi-play-fill')) {
     document.getElementById('musicSource').play();
     setPause();
-  } else if (btnPlay.innerHTML == pause) {
+  } else if (btnPlay.classList.contains('bi-pause-fill')) {
     document.getElementById('musicSource').pause();
     setPlay();
   }
@@ -183,11 +185,15 @@ btnPlay.addEventListener('click', () => {
 btnNext.addEventListener('click', playRandomTrack);
 
 function setPlay() {
-  btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
+  btnPlay.classList.remove('bi-pause-fill');
+  btnPlay.classList.add('bi-play-fill');
+  // btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
 }
 
 function setPause() {
-  btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
+  btnPlay.classList.remove('bi-play-fill');
+  btnPlay.classList.add('bi-pause-fill');
+  // btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
 }
 
 function getFromLocalStorage() {
@@ -203,3 +209,15 @@ function getFromLocalStorage() {
 function updateLocalStorage() {
   localStorage.setItem('history', JSON.stringify(myHistory));
 }
+
+
+
+async function playtime() {
+  const mywidth = 100 / 29;
+  let counter = 0;
+  setInterval(() => {
+    counter += mywidth;
+    progressBar.style.width = counter + '%';
+  }, 1000);
+}
+
