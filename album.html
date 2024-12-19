@@ -20,7 +20,6 @@
     />
     <link rel="stylesheet" href="assets/css/circular-font.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.min.js"></script>
   </head>
 
   <body>
@@ -47,21 +46,9 @@
                   </a>
 
                   <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="javascript:void(0)"
-                        >File</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="javascript:void(0)"
-                        >Modifica</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="javascript:void(0)"
-                        >Visualizza</a
-                      >
-                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)">File</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0)">Modifica</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0)">Visualizza</a></li>
                   </ul>
                 </div>
               </li>
@@ -103,15 +90,12 @@
           >
             <ul class="navbar-nav d-flex flex-column">
               <li class="nav-item">
-                <a
-                  class="nav-link p-1"
-                  aria-current="page"
-                  href="javascript:void(0)"
+                <a class="nav-link p-1" aria-current="page" href="javascript:void(0)"
                   ><i class="bi bi-plus-square m-2"></i>Crea playlist</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link p-1" href="mostLike.html"
+                <a class="nav-link p-1"  href="mostLike.html"
                   ><i class="bi bi-heart-fill m-2"></i>Brani che ti piacciono</a
                 >
               </li>
@@ -124,24 +108,17 @@
           </div>
         </nav>
         <div class="search d-none d-lg-block">
-          <ul id="searchedList" class="overflow-y-scroll"></ul>
+          <ul id="searchedList" class="overflow-y-scroll">
+          </ul>
         </div>
       </header>
 
-      <main
-        class="col-lg-8 order-0 mb-5"
-        id="background"
-        style="min-height: 90vh"
-      >
+      <main class="col-lg-8 order-0 mb-5">
         <div class="container pb-3">
           <div class="d-flex justify-content-between my-3">
             <div>
-              <a href="javascript:history.back()"
-                ><i class="bi bi-chevron-left"></i
-              ></a>
-              <a href="javascript:history.forward()"
-                ><i class="bi bi-chevron-right"></i
-              ></a>
+              <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
+              <a href="javascript:history.forward()"><i class="bi bi-chevron-right"></i></a>
             </div>
             <div class="profile">
               <a
@@ -155,14 +132,8 @@
                 Tommaso Di Berto Mancini
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
-                <li>
-                  <a class="dropdown-item" href="javascript:void(0)">Profilo</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="javascript:void(0)"
-                    >Impostazioni</a
-                  >
-                </li>
+                <li><a class="dropdown-item" href="javascript:void(0)">Profilo</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0)">Impostazioni</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
@@ -173,22 +144,13 @@
             </div>
           </div>
           <div class="d-flex bg-transparent">
-            <img
-              src=""
-              height="160px"
-              id="albumImage"
-              crossorigin="anonymous"
-            />
+            <img src="" height="160px" id="albumImage" />
             <div class="card-body ps-lg-3 pt-lg-4 bigCardDiv">
               <p class="h6 fs-6">ALBUM</p>
               <h1 class="display-4 h1 fw-bolder" id="albumTitle">
                 <!-- Gioventù Bruciata -->
               </h1>
-              <a
-                id="artistLink"
-                href="javascript:void(0)"
-                class="btn btn-transparent ps-0"
-              >
+              <a id="artistLink" href="javascript:void(0)" class="btn btn-transparent ps-0">
                 <img
                   id="albumArtistImage"
                   src="assets/imgs/main/image-12.jpg"
@@ -223,36 +185,17 @@
               </a>
 
               <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="javascript:void(0)">File</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="javascript:void(0)"
-                    >Modifica</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="javascript:void(0)"
-                    >Visualizza</a
-                  >
-                </li>
+                <li><a class="dropdown-item" href="javascript:void(0)">File</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0)">Modifica</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0)">Visualizza</a></li>
               </ul>
             </div>
           </div>
           <div class="mx-1">
             <div class="d-flex row mb-2 albumTitle">
-              <p class="px-3 col-1 fst-italic fw-light" style="font-size: 17px">
-                #
-              </p>
-              <p class="col-6 fst-italic fw-light" style="font-size: 15px">
-                TITOLO
-              </p>
-              <p
-                class="col-3 fst-italic fw-light numberVisual"
-                style="font-size: 15px"
-              >
-                RIPRODUZIONI
-              </p>
+              <p class="px-3 col-1 fst-italic fw-light" style="font-size: 17px;">#</p>
+              <p class="col-6 fst-italic fw-light" style="font-size: 15px;">TITOLO</p>
+              <p class="col-3 fst-italic fw-light numberVisual" style="font-size: 15px;">RIPRODUZIONI</p>
               <p class="pe-4 col-2 numberTime"><i class="bi bi-clock"></i></p>
             </div>
             <div id="trackList">
@@ -398,10 +341,7 @@
     <section id="player" class="d-flex justify-content-between">
       <div class="left">
         <div class="audio-container">
-          <img
-            id="trackImage"
-            src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg"
-          />
+          <img id="trackImage" src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg" />
           <div class="audio-info">
             <h4 id="trackName">Seleziona un brano da ascoltare!</h4>
             <p id="artistName">FALLO!</p>
@@ -416,7 +356,8 @@
 
       <audio id="musicSource" class="custom-audio-player" controls></audio>
 
-      <div class="right"></div>
+      <div class="right">
+      </div>
     </section>
 
     <script
