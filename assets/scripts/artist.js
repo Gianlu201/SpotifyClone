@@ -16,12 +16,14 @@ const myHistory = [];
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
 let myArtist;
 let artistTracks = [];
+let myFavTracks = [];
 
 document.addEventListener('load', init());
 
 btnRandomPlay.addEventListener('click', playRandomTrack);
 
 function init() {
+  getMyFav();
   getArtist('artist', URL, artistId);
   getFromLocalStorage();
 }
@@ -74,8 +76,6 @@ function loadPage() {
 }
 
 function showDetails() {
-  console.log('ciao');
-
   nameartist.innerText = myArtist.name;
   numeroAscolti.innerText = myArtist.nb_fan;
   artistDetails.style.backgroundImage = `url("${myArtist.picture_xl}")`;
@@ -84,7 +84,22 @@ function showDetails() {
 }
 
 function showTracks() {
+  let taken;
+
   for (let i = 0; i < 30; i++) {
+    taken = false;
+    let myId;
+    myFavTracks.forEach((track) => {
+      if (
+        track.title == artistTracks[i].title_short &&
+        track.artist_id == artistTracks[i].artist.id &&
+        track.album_id == artistTracks[i].album.id
+      ) {
+        taken = true;
+        myId = track.id;
+      }
+    });
+
     const newRow = document.createElement('div');
     newRow.classList.add('row', 'p-2');
 
@@ -112,11 +127,16 @@ function showTracks() {
     newHeartDiv.classList.add('col-1');
 
     const heart = document.createElement('span');
-    heart.innerHTML = `<i class="bi bi-heart"></i>`;
-    heart.setAttribute(
-      'onclick',
-      `addLike("${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.title}", "${artistTracks[i].duration}", "${artistTracks[i].rank}", "${artistTracks[i].artist.id}", "${artistTracks[i].album.cover_small}", "${artistTracks[i].album.id}", "${artistTracks[i].preview}", ${i})`
-    );
+    if (taken) {
+      heart.innerHTML = `<i class="bi bi-heart-fill text-success"></i>`;
+      heart.setAttribute('onclick', `removeLike(${myId}, ${i})`);
+    } else {
+      heart.innerHTML = `<i class="bi bi-heart"></i>`;
+      heart.setAttribute(
+        'onclick',
+        `addLike("${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.title}", "${artistTracks[i].duration}", "${artistTracks[i].rank}", "${artistTracks[i].artist.id}", "${artistTracks[i].album.cover_small}", "${artistTracks[i].album.id}", "${artistTracks[i].preview}", ${i})`
+      );
+    }
 
     const newListeners = document.createElement('span');
     newListeners.classList.add('col-2', 'text-secondary', 'text-end');
@@ -287,15 +307,51 @@ async function addToLiked(obj) {
       }
     );
     const data = await response.json();
-    console.log(data);
   } catch (error) {
     console.log(error);
   }
 }
 
 function setFilledHearth(index) {
-  const myRows = document.querySelectorAll('#tracksList .row');
-  console.log(myRows[index]);
+  const myRow = document.querySelector(
+    `#tracksList .row:nth-of-type(${index + 1}) div span i`
+  );
+  myRow.classList.remove('bi-heart');
+  myRow.classList.add('bi-heart-fill', 'text-success');
+}
 
-  // Intercettare il cuore e cambiare la classe in -fill
+function setEmptyHearth(index) {
+  const myRow = document.querySelector(
+    `#tracksList .row:nth-of-type(${index + 1}) div span i`
+  );
+  myRow.classList.remove('bi-heart-fill', 'text-success');
+  myRow.classList.add('bi-heart');
+}
+
+async function getMyFav() {
+  try {
+    const response = await fetch(
+      'https://6763e34117ec5852caea54ca.mockapi.io/playlist'
+    );
+    const data = await response.json();
+    myFavTracks = data;
+    console.log(myFavTracks);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function removeLike(id, index) {
+  console.log(id);
+  try {
+    const response = await fetch(
+      'https://6763e34117ec5852caea54ca.mockapi.io/playlist/' + id,
+      {
+        method: 'DELETE',
+      }
+    );
+    setEmptyHearth(index);
+  } catch (error) {
+    console.log(error);
+  }
 }
