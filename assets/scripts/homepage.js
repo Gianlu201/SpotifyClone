@@ -152,6 +152,10 @@ function printBigCard(element) {
   newRow.appendChild(newCol2);
 
   bigCard.appendChild(newRow);
+
+  bigCard.addEventListener('click', () => {           //funzione che permette di cliccare la BIGCARD
+    window.location.href = `album.html?id=${element.album.id}`;
+  });
 }
 
 // TODO Aggiungere spazio tra le carte
@@ -176,8 +180,8 @@ function printSuggests(list) {
       'position-relative', 
       'mb-3',
       'me-3', 
-      'bg-dark',
-      'px-3'
+      'px-3',
+      'cardMini'
     );
   
     newCol.style.width = 'calc(33.333% - 20px)';
@@ -191,7 +195,7 @@ function printSuggests(list) {
       newDiv.classList.add('collage');
       for (let j = 0; j < 4; j++) {
         const newImg = document.createElement('img');
-        newImg.src = `assets/imgs/main/image-${10 + i + j}.jpg`;
+        newImg.src = `assets/imgs/main/image-${10 + i + j}.jpg`; 
         newDiv.appendChild(newImg);
         newTitle.innerText =
           collageTitles[Math.floor(Math.random() * collageTitles.length)];
@@ -226,12 +230,17 @@ function printSuggests(list) {
 function printList(list, target) {
   target.innerHTML = '';
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const newCard = document.createElement('div');
-    newCard.classList.add('card', 'bg-dark', 'position-relative'); 
+    newCard.classList.add('card', 'secondCard', 'position-relative'); 
+
+    if (i >= 3) {
+      newCard.classList.add('hide-mobile');
+    }
 
     const newAImg = document.createElement('a');
     newAImg.href = `album.html?id=${list[i + 8].album.id}`;
+
 
     const newImg = document.createElement('img');
     newImg.src = list[i + 8].album.cover_medium;
