@@ -8,6 +8,8 @@ const artistDetails = document.getElementById('artistDetails');
 const artistName = document.getElementById('artistName');
 const showMore = document.getElementById('showMore');
 const btnRandomPlay = document.getElementById('randomPlay');
+const musicSource = document.getElementById('musicSource');
+const searchedList = document.getElementById('searchedList');
 
 const btnPlay = document.getElementById('btnPlay');
 const btnNext = document.getElementById('btnNext');
@@ -26,6 +28,7 @@ function init() {
   getMyFav();
   getArtist('artist', URL, artistId);
   getFromLocalStorage();
+  updateHistoryList();
 }
 
 async function getArtist(str, url, id) {
@@ -209,6 +212,39 @@ class Track {
   }
 }
 
+function updateHistoryList() {
+  searchedList.innerHTML = '';
+
+  for (let i = 0; i < myHistory.length; i++) {
+    const newLi = document.createElement('li');
+    newLi.innerText = myHistory[i].title;
+    newLi.setAttribute(
+      'onclick',
+      `setPlayer("${myHistory[i].preview}", "${myHistory[i].title}", "${myHistory[i].artist}", "${myHistory[i].albumCover}")`
+    );
+
+    searchedList.prepend(newLi);
+  }
+}
+
+function updateHistory(obj) {
+  const myObj = { ...obj };
+  for (let i = 0; i < myHistory.length - 1; i++) {
+    if (
+      myHistory[i].preview === myObj.preview &&
+      myHistory[i].title === myObj.title &&
+      myHistory[i].artist === myObj.artist &&
+      myHistory[i].albumCover === myObj.albumCover
+    ) {
+      myHistory.splice(i, 1);
+    }
+  }
+
+  if (myHistory.length > 30) {
+    myHistory.shift();
+  }
+}
+
 function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
   musicSource.src = link;
@@ -221,7 +257,9 @@ function setPlayer(link, title, artist, imgUrl) {
 
   const myTrack = new Track(link, title, artist, imgUrl);
   myHistory.push(myTrack);
+  updateHistory(myTrack);
   updateLocalStorage();
+  updateHistoryList();
 }
 
 btnPlay.addEventListener('click', () => {

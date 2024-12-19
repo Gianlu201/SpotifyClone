@@ -46,9 +46,21 @@
                   </a>
 
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:void(0)">File</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0)">Modifica</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0)">Visualizza</a></li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0)"
+                        >File</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0)"
+                        >Modifica</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0)"
+                        >Visualizza</a
+                      >
+                    </li>
                   </ul>
                 </div>
               </li>
@@ -90,12 +102,15 @@
           >
             <ul class="navbar-nav d-flex flex-column">
               <li class="nav-item">
-                <a class="nav-link p-1" aria-current="page" href="javascript:void(0)"
+                <a
+                  class="nav-link p-1"
+                  aria-current="page"
+                  href="javascript:void(0)"
                   ><i class="bi bi-plus-square m-2"></i>Crea playlist</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link p-1" href="javascript:void(0)"
+                <a class="nav-link p-1"  href="mostLike.html"
                   ><i class="bi bi-heart-fill m-2"></i>Brani che ti piacciono</a
                 >
               </li>
@@ -108,123 +123,7 @@
           </div>
         </nav>
         <div class="search d-none d-lg-block">
-          <ul id="searchList" class="overflow-y-scroll">
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="text-decoration-none text-secondary"
-                >ricerca</a
-              >
-            </li>
-          </ul>
+          <ul id="searchedList" class="overflow-y-scroll"></ul>
         </div>
       </header>
 
@@ -251,8 +150,14 @@
                 Tommaso Di Berto Mancini
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="javascript:void(0)">Profilo</a></li>
-                <li><a class="dropdown-item" href="javascript:void(0)">Impostazioni</a></li>
+                <li>
+                  <a class="dropdown-item" href="javascript:void(0)">Profilo</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Impostazioni</a
+                  >
+                </li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
@@ -264,12 +169,12 @@
           </div>
           <div class="container mt-5 pt-3">
             <div class="d-flex flex-column py-5 my-5">
-              <spam
+              <span
                 ><i class="bi bi-patch-check-fill text-primary"> </i>artista
-                verificato</spam
+                verificato</span
               >
               <h1 class="display-2 fw-bold" id="nameartist"></h1>
-              <spam id="numeroAscolti"></spam>
+              <span id="numeroAscolti"></span>
             </div>
           </div>
         </div>

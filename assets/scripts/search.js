@@ -2,6 +2,72 @@ const btnSearch = document.getElementById('btnSearch');
 const resultContainer = document.getElementById('resultContainer');
 const titleSfoglia = document.getElementById('titleSfoglia');
 const sectionSfoglia = document.getElementById('sectionSfoglia');
+const musicSource = document.getElementById('musicSource');
+const searchedList = document.getElementById('searchedList');
+const myHistory = [];
+
+document.addEventListener('load', init());
+
+function init() {
+  getFromLocalStorage();
+  updateHistoryList();
+}
+
+class Track {
+  constructor(_preview, _title, _artist, _albumCover) {
+    this.preview = _preview;
+    this.title = _title;
+    this.artist = _artist;
+    this.albumCover = _albumCover;
+  }
+}
+
+function getFromLocalStorage() {
+  const hist = JSON.parse(localStorage.getItem('history'));
+
+  if (hist) {
+    hist.forEach((element) => {
+      myHistory.push(element);
+    });
+  }
+}
+
+function updateHistoryList() {
+  searchedList.innerHTML = '';
+
+  for (let i = 0; i < myHistory.length; i++) {
+    const newLi = document.createElement('li');
+    newLi.innerText = myHistory[i].title;
+    newLi.setAttribute(
+      'onclick',
+      `setPlayer("${myHistory[i].preview}", "${myHistory[i].title}", "${myHistory[i].artist}", "${myHistory[i].albumCover}")`
+    );
+
+    searchedList.prepend(newLi);
+  }
+}
+
+function updateHistory(obj) {
+  const myObj = { ...obj };
+  for (let i = 0; i < myHistory.length - 1; i++) {
+    if (
+      myHistory[i].preview === myObj.preview &&
+      myHistory[i].title === myObj.title &&
+      myHistory[i].artist === myObj.artist &&
+      myHistory[i].albumCover === myObj.albumCover
+    ) {
+      myHistory.splice(i, 1);
+    }
+  }
+
+  if (myHistory.length > 30) {
+    myHistory.shift();
+  }
+}
+
+function updateLocalStorage() {
+  localStorage.setItem('history', JSON.stringify(myHistory));
+}
 
 function filteredSearch() {
   const query = document.getElementById('searchInput').value;
@@ -90,7 +156,6 @@ function getSuitableTitle(title, titleShort, maxLength = 20) {
   return title.length > maxLength ? titleShort : title;
 }
 
-
 function displayResults(tracks) {
   resultContainer.innerHTML = '';
   titleSfoglia.style.display = 'none';
@@ -115,8 +180,15 @@ function displayResults(tracks) {
     //     `;
 
     const trackCard = document.createElement('div');
-    trackCard.classList.add('col-12', 'col-sm-6', 'col-md-6', 'card', 'shadow-sm', 'category-card', 'abc');
-    
+    trackCard.classList.add(
+      'col-12',
+      'col-sm-6',
+      'col-md-6',
+      'card',
+      'shadow-sm',
+      'category-card',
+      'abc'
+    );
 
     const newAlbumLink = document.createElement('a');
     newAlbumLink.href = `album.html?id=${track.album.id}`;
@@ -155,9 +227,7 @@ function displayResults(tracks) {
     resultContainer.appendChild(trackCard);
   });
   adjustTitleFontSize();
-  
 }
-
 
 function noMatch() {
   resultContainer.innerHTML = '';
@@ -179,4 +249,10 @@ function setPlayer(link, title, artist, imgUrl) {
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
   document.getElementById('artistName').innerText = artist;
+
+  const myTrack = new Track(link, title, artist, imgUrl);
+  myHistory.push(myTrack);
+  updateHistory(myTrack);
+  updateLocalStorage();
+  updateHistoryList();
 }

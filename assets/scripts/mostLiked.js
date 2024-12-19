@@ -1,6 +1,9 @@
 const trackList = document.getElementById('trackList');
 const playlistCounter = document.getElementById('playlistCounter');
 const btnPlayRandom = document.getElementById('playRandom');
+const musicSource = document.getElementById('musicSource');
+const searchedList = document.getElementById('searchedList');
+const myHistory = [];
 
 const URL = 'https://6763e34117ec5852caea54ca.mockapi.io/playlist';
 let myTracks = [];
@@ -11,6 +14,64 @@ btnPlayRandom.addEventListener('click', playRandom);
 
 function init() {
   getTracks();
+  getFromLocalStorage();
+  updateHistoryList();
+}
+
+class Track {
+  constructor(_preview, _title, _artist, _albumCover) {
+    this.preview = _preview;
+    this.title = _title;
+    this.artist = _artist;
+    this.albumCover = _albumCover;
+  }
+}
+
+function getFromLocalStorage() {
+  const hist = JSON.parse(localStorage.getItem('history'));
+
+  if (hist) {
+    hist.forEach((element) => {
+      myHistory.push(element);
+    });
+  }
+}
+
+function updateHistoryList() {
+  searchedList.innerHTML = '';
+
+  for (let i = 0; i < myHistory.length; i++) {
+    const newLi = document.createElement('li');
+    newLi.innerText = myHistory[i].title;
+    newLi.setAttribute(
+      'onclick',
+      `setPlayer("${myHistory[i].preview}", "${myHistory[i].title}", "${myHistory[i].artist}", "${myHistory[i].albumCover}")`
+    );
+
+    searchedList.prepend(newLi);
+  }
+}
+
+function updateHistory(obj) {
+  const myObj = { ...obj };
+  for (let i = 0; i < myHistory.length - 1; i++) {
+    if (
+      myHistory[i].preview === myObj.preview &&
+      myHistory[i].title === myObj.title &&
+      myHistory[i].artist === myObj.artist &&
+      myHistory[i].albumCover === myObj.albumCover
+    ) {
+      myHistory.splice(i, 1);
+    }
+  }
+
+  if (myHistory.length > 30) {
+    myHistory.shift();
+  }
+}
+
+function updateLocalStorage() {
+  localStorage.setItem('history', JSON.stringify(myHistory));
 }
 
 async function getTracks() {
@@ -106,8 +167,14 @@ function setPlayer(link, title, artist, imgUrl) {
   musicSource.setAttribute('autoplay', 'true');
 
   document.getElementById('trackImage').src = imgUrl;
-  document.getElementById('trackName').innerText = `${title.slice(0, 20)}...`;
+  document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
   document.getElementById('artistName').innerText = artist;
+
+  const myTrack = new Track(link, title, artist, imgUrl);
+  myHistory.push(myTrack);
+  updateHistory(myTrack);
+  updateLocalStorage();
+  updateHistoryList();
 }
 
 function getTimeFormat(val) {
