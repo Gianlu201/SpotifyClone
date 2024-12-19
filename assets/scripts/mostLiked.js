@@ -34,7 +34,7 @@ function showTracks() {
 
   for (let i = 0; i < myTracks.length; i++) {
     const newRow = document.createElement('div');
-    newRow.classList.add('row');
+    newRow.classList.add('row', 'mb-3');
 
     const newCount = document.createElement('p');
     newCount.classList.add('col-1', 'px-3', 'align-content-center', 'mb-0');
@@ -58,7 +58,7 @@ function showTracks() {
     const newArtist = document.createElement('a');
     newArtist.classList.add('text-secondary', 'm-0');
     newArtist.innerText = myTracks[i].artist;
-    newArtist.href = `artistPage.html?id=${myTracks[i].artistId}`;
+    newArtist.href = `artistPage.html?id=${myTracks[i].artist_id}`;
 
     const newRank = document.createElement('p');
     newRank.classList.add('col-3');

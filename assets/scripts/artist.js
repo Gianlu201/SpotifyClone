@@ -44,6 +44,30 @@ async function getArtist(str, url, id) {
   }
 }
 
+class FavTrack {
+  constructor(
+    _title,
+    _artist,
+    _album,
+    _duration,
+    _rank,
+    _artist_id,
+    _album_cover,
+    _album_id,
+    _preview
+  ) {
+    this.title = _title;
+    this.artist = _artist;
+    this.album = _album;
+    this.duration = _duration;
+    this.rank = _rank;
+    this.artist_id = _artist_id;
+    this.album_cover = _album_cover;
+    this.album_id = _album_id;
+    this.preview = _preview;
+  }
+}
+
 function loadPage() {
   showDetails();
   showTracks();
@@ -84,8 +108,18 @@ function showTracks() {
       `setPlayer("${artistTracks[i].preview}", "${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.cover_small}")`
     );
 
+    const newHeartDiv = document.createElement('div');
+    newHeartDiv.classList.add('col-1');
+
+    const heart = document.createElement('span');
+    heart.innerHTML = `<i class="bi bi-heart"></i>`;
+    heart.setAttribute(
+      'onclick',
+      `addLike("${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.title}", "${artistTracks[i].duration}", "${artistTracks[i].rank}", "${artistTracks[i].artist.id}", "${artistTracks[i].album.cover_small}", "${artistTracks[i].album.id}", "${artistTracks[i].preview}", ${i})`
+    );
+
     const newListeners = document.createElement('span');
-    newListeners.classList.add('col-3', 'text-secondary', 'text-end');
+    newListeners.classList.add('col-2', 'text-secondary', 'text-end');
     newListeners.innerText = artistTracks[i].rank;
 
     const newTime = document.createElement('span');
@@ -96,6 +130,8 @@ function showTracks() {
     newRow.appendChild(newNum);
     newRow.appendChild(newDiv);
     newRow.appendChild(newTitle);
+    newHeartDiv.appendChild(heart);
+    newRow.appendChild(newHeartDiv);
     newRow.appendChild(newListeners);
     newRow.appendChild(newTime);
 
@@ -202,4 +238,64 @@ function getFromLocalStorage() {
 
 function updateLocalStorage() {
   localStorage.setItem('history', JSON.stringify(myHistory));
+}
+
+function addLike(
+  title,
+  artist,
+  album,
+  duration,
+  rank,
+  artistId,
+  albumCover,
+  albumId,
+  preview,
+  index
+) {
+  const myDuration = parseInt(duration);
+  const myRank = parseInt(rank);
+  const myArtistId = parseInt(artistId);
+  const myAlbumId = parseInt(albumId);
+
+  const myFavTrack = new FavTrack(
+    title,
+    artist,
+    album,
+    myDuration,
+    myRank,
+    myArtistId,
+    albumCover,
+    myAlbumId,
+    preview
+  );
+
+  setFilledHearth(index);
+
+  addToLiked(myFavTrack);
+}
+
+async function addToLiked(obj) {
+  try {
+    const response = await fetch(
+      'https://6763e34117ec5852caea54ca.mockapi.io/playlist',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset= UTF-8',
+        },
+        body: JSON.stringify(obj),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function setFilledHearth(index) {
+  const myRows = document.querySelectorAll('#tracksList .row');
+  console.log(myRows[index]);
+
+  // Intercettare il cuore e cambiare la classe in -fill
 }

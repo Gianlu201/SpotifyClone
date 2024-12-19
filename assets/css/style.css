@@ -473,7 +473,9 @@ audio#musicSource {
 }
 
 .trackTitle,
-#showMore {
+#showMore,
+.bi-heart,
+.bi-heart-fill {
   cursor: pointer;
 }
 
