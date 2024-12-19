@@ -230,6 +230,10 @@ audio#musicSource {
   z-index: 1000;
 }
 
+.buttonPlayBigCard {
+  z-index: 1000000;
+}
+
 .audio-container {
   display: flex;
   align-items: center;
@@ -492,11 +496,6 @@ audio#musicSource {
     margin-bottom: 15px; /* Spazio tra le card */
   }
 
-  .card-img-top {
-    max-width: 100%;
-    height: auto; /* Adatta l'immagine alla larghezza della card */
-  }
-
   /* Se vuoi ridurre il numero di colonne a 1 per schermi più piccoli, puoi usare una grid o flexbox */
   .card-deck {
     display: flex;
@@ -578,7 +577,14 @@ audio#musicSource {
   #player {
     bottom: 0px;
   }
+
+  .carouselCard {
+    
+  }
+
 }
+
+
 
 
 @media (min-width: 1200px) {

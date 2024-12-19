@@ -131,12 +131,13 @@ function printBigCard(element) {
     'btn-success',
     'rounded-5',
     'text-black',
-    'me-3'
+    'me-3',
+    'buttonPlayBigCard'
   );
   newBtnPlay.innerText = 'Play';
 
-  newBtnPlay.addEventListener('click', () => {
-    //funzione che fa riprodurre al btn la musica
+  newBtnPlay.addEventListener('click', (event) => {
+    event.stopPropagation(); // Previene che l'evento si propaghi alla bigCard
     setPlayer(
       element.preview,
       element.title,
@@ -144,6 +145,7 @@ function printBigCard(element) {
       element.album.cover_small
     );
   });
+  
 
   const newBtnSave = document.createElement('button');
   newBtnSave.type = 'button';
