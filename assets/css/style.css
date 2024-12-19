@@ -300,7 +300,7 @@ audio#musicSource {
   border-color: #b3b3b3;
 }
 
-.category-card, .custom-card {
+.category-card {
   height: 120px;
   border-radius: 10px;
   display: flex;
@@ -311,10 +311,6 @@ audio#musicSource {
   font-size: 1.2rem;
   position: relative;
   overflow: hidden;
-}
-
-.custom-card{
-  background-color: #212529;
 }
 
 .category-card img {
@@ -365,11 +361,11 @@ audio#musicSource {
 }
 
 .secondCard {
-  background-color: #2B2B2B;
+  background-color: #2b2b2b;
 }
 
 .card {
-  transition: transform 0.3s ease, background-color 0.3s ease; 
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 .cart-title {
   /* background dinamico titolo card */
@@ -378,13 +374,13 @@ audio#musicSource {
 }
 
 .card:hover {
-  background-color: #2B2B2B;  
-  transform: scale(1.05); 
+  background-color: #2b2b2b;
+  transform: scale(1.05);
   cursor: pointer;
 }
 
 .cardMini {
-  background-color: #2B2B2B;
+  background-color: #2b2b2b;
 }
 
 .cardMini:hover {
@@ -392,7 +388,7 @@ audio#musicSource {
 }
 
 .cart-title:hover {
-  background-color: #2B2B2B;
+  background-color: #2b2b2b;
   border-radius: 10px;
   padding: 0.1em; /* sorta di animazione dell hover */
   cursor: pointer;
@@ -455,22 +451,19 @@ audio#musicSource {
 }
 
 .card:hover .play2-button {
-  opacity: 1; 
-  visibility: visible; 
-  transform: scale(1.1); 
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.1);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-   
-}
-
-.card-img-top {
-  min-width: 168px;
 }
 
 #artistDetails {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
+
 
 .trackTitle,
 #showMore {
@@ -535,7 +528,9 @@ audio#musicSource {
 
   /* albumpage */
 
-  .numberLine, .numberVisual, .numberTime {
+  .numberLine,
+  .numberVisual,
+  .numberTime {
     display: none;
   }
 
@@ -551,9 +546,7 @@ audio#musicSource {
     display: flex;
     flex-wrap: wrap;
   }
-
 }
-
 
 @media screen and (min-width: 992px) {
   header {
@@ -580,8 +573,7 @@ audio#musicSource {
   }
 }
 
-
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .container {
     max-width: 900px;
     /* Riduci larghezza su XL */
@@ -595,5 +587,62 @@ audio#musicSource {
     height: auto;
     border-radius: 15px;
     transform: none;
+  }
+}
+
+#resultContainer .category-card {
+  background-color: #2a2a2a;
+}
+
+#resultContainer .category-card img {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  width: 80px;
+  height: auto;
+  border-radius: 15px;
+  transform: none;
+}
+
+@media screen and (max-width: 767px) {
+  #resultContainer .category-card img {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #resultContainer .category-card img {
+    width: 60px;
+  }
+}
+
+.abc {
+  max-width: 48%;
+}
+
+.card-title,
+.card-body a {
+  font-size: 2vw;
+  overflow: hidden;
+}
+
+@media (max-width: 576px) {
+  .card-title,
+  .card-body a {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 1200px) {
+  .card-title,
+  .card-body a {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-title,
+  .card-body a {
+    font-size: 1.5vw;
   }
 }

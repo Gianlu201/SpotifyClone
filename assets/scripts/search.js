@@ -85,6 +85,12 @@ function filterTracks(tracks) {
   displayResults(myTracks);
 }
 
+function getSuitableTitle(title, titleShort, maxLength = 20) {
+  // Se il titolo è più lungo del limite massimo, usa il titolo abbreviato
+  return title.length > maxLength ? titleShort : title;
+}
+
+
 function displayResults(tracks) {
   resultContainer.innerHTML = '';
   titleSfoglia.style.display = 'none';
@@ -109,7 +115,8 @@ function displayResults(tracks) {
     //     `;
 
     const trackCard = document.createElement('div');
-    trackCard.classList.add('card', 'shadow-sm', 'custom-card');
+    trackCard.classList.add('col-12', 'col-sm-6', 'col-md-6', 'card', 'shadow-sm', 'category-card', 'abc');
+    
 
     const newAlbumLink = document.createElement('a');
     newAlbumLink.href = `album.html?id=${track.album.id}`;
@@ -122,9 +129,11 @@ function displayResults(tracks) {
     const newBody = document.createElement('div');
     newBody.classList.add('card-body');
 
+    const suitableTitle = getSuitableTitle(track.title, track.title_short);
+
     const newTitle = document.createElement('h5');
     newTitle.classList.add('card-title');
-    newTitle.innerText = track.title;
+    newTitle.innerText = suitableTitle;
     newTitle.setAttribute(
       'onclick',
       `setPlayer("${track.preview}", "${track.title}", "${track.artist.name}", "${track.album.cover_small}")`
@@ -145,7 +154,10 @@ function displayResults(tracks) {
 
     resultContainer.appendChild(trackCard);
   });
+  adjustTitleFontSize();
+  
 }
+
 
 function noMatch() {
   resultContainer.innerHTML = '';
