@@ -465,9 +465,7 @@ audio#musicSource {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
-
 
 .trackTitle,
 #showMore,
@@ -573,7 +571,6 @@ audio#musicSource {
   #player {
     bottom: 0px;
   }
-
 }
 @media (min-width: 1200px) {
   .container {
@@ -591,7 +588,6 @@ audio#musicSource {
     transform: none;
   }
 }
-
 
 #resultContainer .category-card {
   background-color: #2a2a2a;
@@ -648,5 +644,4 @@ audio#musicSource {
   .card-body a {
     font-size: 1.5vw;
   }
-
 }

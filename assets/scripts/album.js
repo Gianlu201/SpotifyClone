@@ -1,3 +1,6 @@
+const colorThief = new ColorThief();
+const background = document.getElementById('background');
+
 const params = new URLSearchParams(window.location.search);
 const albumId = params.get('id');
 const albumImage = document.getElementById('albumImage');
@@ -90,6 +93,9 @@ async function getAlbum(id) {
 function printPage() {
   printAlbumDetails();
   printTracks(myAlbum.tracks.data);
+  setTimeout(() => {
+    setBackgroundColor();
+  }, 50);
 }
 
 function printAlbumDetails() {
@@ -98,6 +104,39 @@ function printAlbumDetails() {
   albumArtist.innerText = myAlbum.artist.name;
   albumArtistImage.src = myAlbum.artist.picture_small;
   artistLink.href = `http://127.0.0.1:5500/artistPage.html?id=${myAlbum.artist.id}`;
+}
+
+async function setBackgroundColor() {
+  let color;
+  let linearGradient;
+
+  try {
+    const img = document.getElementById('albumImage');
+    const dominantRGB = await colorThief.getColor(img);
+    // console.log(dominantRGB['0']);
+    // console.log(dominantRGB['1']);
+    // console.log(dominantRGB['2']);
+    // console.log(rgbToHex(dominantRGB[0], dominantRGB[1], dominantRGB[2]));
+
+    color = rgbToHex(dominantRGB['0'], dominantRGB['1'], dominantRGB['2']);
+
+    linearGradient = 'linear-gradient(' + color + ' 3%,#181818)';
+
+    background.style.background = linearGradient;
+
+    return;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? '0' + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+  return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
 function printTracks(tracks) {
