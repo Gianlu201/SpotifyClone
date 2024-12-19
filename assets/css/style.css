@@ -357,7 +357,8 @@ audio#musicSource {
   width: 50%; /* Adatta il player alla larghezza del contenitore */
 }
 .custom-audio-player::-webkit-media-controls-panel {
-  background-color: #181818; /* Cambia il colore di sfondo del player */
+  background-color: #181818;
+  appearance: none; /* Cambia il colore di sfondo del player */
 }
 .custom-audio-player::-webkit-media-controls-play-button,
 .custom-audio-player::-webkit-media-controls-current-time-display,
@@ -366,10 +367,12 @@ audio#musicSource {
 .custom-audio-player::-webkit-media-controls-volume-slider {
   background-color: #181818; /* Cambia il colore dei pulsanti */
   color: white; /* Cambia il colore del testo e delle icone */
+  appearance: none;
 }
 .custom-audio-player::-webkit-media-controls-mute-button,
 .custom-audio-player::-webkit-media-controls-fullscreen-button {
   background-color: #181818; /* Cambia il colore dei pulsanti mute e fullscreen */
+  appearance: none;
 }
 .custom-audio-player::-webkit-media-controls-timeline-container {
   background-color: red; /* Cambia il colore della barra temporale */
