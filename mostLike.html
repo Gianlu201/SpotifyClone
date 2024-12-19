@@ -228,12 +228,16 @@
         </div>
       </header>
 
-      <main class="col-lg-8 order-0 mb-5">
+      <main class="col-lg-8 order-0 mb-5" id="mostLikeMain">
         <div class="container pb-3">
           <div class="d-flex justify-content-between my-3">
             <div>
-              <a href="javascript:history.back()"><i class="bi bi-chevron-left"></i></a>
-              <a href="javascript:history.forward()"><i class="bi bi-chevron-right"></i></a>
+              <a href="javascript:history.back()"
+                ><i class="bi bi-chevron-left"></i
+              ></a>
+              <a href="javascript:history.forward()"
+                ><i class="bi bi-chevron-right"></i
+              ></a>
             </div>
             <div class="profile">
               <a
@@ -262,16 +266,17 @@
             <img src="assets/imgs/Mostlikeimg.png" height="160px" />
             <div class="card-body ps-lg-3 pt-lg-4 bigCardDiv">
               <p class="h6 fs-6">PLAYLIST</p>
-              <h5 class="card-title h1 fw-bolder">
-                Brani Che Ti Piacciono
-              </h5>
+              <h5 class="card-title h1 fw-bolder">Brani Che Ti Piacciono</h5>
               <a id="artistLink" href="#" class="btn btn-transparent ps-0">
                 <img
                   src="assets/imgs/pngwing.com.png"
                   width="20px"
                   class="rounded-circle pe-1"
                 />
-                <span>Tommaso Di Berto Mancini - <span id="playlistCounter"></span> Brani</span>
+                <span
+                  >Tommaso Di Berto Mancini -
+                  <span id="playlistCounter"></span> Brani</span
+                >
               </a>
             </div>
           </div>
@@ -307,9 +312,18 @@
           </div>
           <div class="mx-1">
             <div class="d-flex row mb-2 albumTitle">
-              <p class="px-3 col-1 fst-italic fw-light" style="font-size: 17px;">#</p>
-              <p class="col-5 fst-italic fw-light" style="font-size: 15px;">TITOLO</p>
-              <p class="col-3 fst-italic fw-light numberVisual" style="font-size: 15px;">RIPRODUZIONI</p>
+              <p class="px-3 col-1 fst-italic fw-light" style="font-size: 17px">
+                #
+              </p>
+              <p class="col-5 fst-italic fw-light" style="font-size: 15px">
+                TITOLO
+              </p>
+              <p
+                class="col-3 fst-italic fw-light numberVisual"
+                style="font-size: 15px"
+              >
+                RIPRODUZIONI
+              </p>
               <p class="pe-4 col-2 numberTime"><i class="bi bi-clock"></i></p>
               <p class="col-1"></p>
             </div>
@@ -456,7 +470,10 @@
     <section id="player" class="d-flex justify-content-between">
       <div class="left">
         <div class="audio-container">
-          <img id="trackImage" src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg" />
+          <img
+            id="trackImage"
+            src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg"
+          />
           <div class="audio-info">
             <h4 id="trackName">Seleziona un brano da ascoltare!</h4>
             <p id="artistName">FALLO!</p>
@@ -471,8 +488,7 @@
 
       <audio id="musicSource" class="custom-audio-player" controls></audio>
 
-      <div class="right">
-      </div>
+      <div class="right"></div>
     </section>
 
     <script
@@ -480,6 +496,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
+    <script src="assets/scripts/mostLiked.js"></script>
   </body>
 </html>
