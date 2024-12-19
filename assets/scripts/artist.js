@@ -9,6 +9,10 @@ const artistName = document.getElementById('artistName');
 const showMore = document.getElementById('showMore');
 const btnRandomPlay = document.getElementById('randomPlay');
 
+const btnPlay = document.getElementById('btnPlay');
+const btnNext = document.getElementById('btnNext');
+const myHistory = [];
+
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
 let myArtist;
 let artistTracks = [];
@@ -19,6 +23,7 @@ btnRandomPlay.addEventListener('click', playRandomTrack);
 
 function init() {
   getArtist('artist', URL, artistId);
+  getFromLocalStorage();
 }
 
 async function getArtist(str, url, id) {
@@ -139,6 +144,15 @@ function playRandomTrack() {
   );
 }
 
+class Track {
+  constructor(_preview, _title, _artist, _albumCover) {
+    this.preview = _preview;
+    this.title = _title;
+    this.artist = _artist;
+    this.albumCover = _albumCover;
+  }
+}
+
 function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
   musicSource.src = link;
@@ -147,4 +161,45 @@ function setPlayer(link, title, artist, imgUrl) {
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
   document.getElementById('artistName').innerText = artist;
+  setPause();
+
+  const myTrack = new Track(link, title, artist, imgUrl);
+  myHistory.push(myTrack);
+  updateLocalStorage();
+}
+
+btnPlay.addEventListener('click', () => {
+  const pause = '<i class="bi bi-pause-fill fs-1"></i>';
+  const play = '<i class="bi bi-play-fill fs-1"></i>';
+  if (btnPlay.innerHTML == play) {
+    document.getElementById('musicSource').play();
+    setPause();
+  } else if (btnPlay.innerHTML == pause) {
+    document.getElementById('musicSource').pause();
+    setPlay();
+  }
+});
+
+btnNext.addEventListener('click', playRandomTrack);
+
+function setPlay() {
+  btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
+}
+
+function setPause() {
+  btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
+}
+
+function getFromLocalStorage() {
+  const hist = JSON.parse(localStorage.getItem('history'));
+
+  if (hist) {
+    hist.forEach((element) => {
+      myHistory.push(element);
+    });
+  }
+}
+
+function updateLocalStorage() {
+  localStorage.setItem('history', JSON.stringify(myHistory));
 }

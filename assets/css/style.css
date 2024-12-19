@@ -126,13 +126,16 @@ header nav li i {
   border-bottom: 1px solid #d3d3d333;
 }
 
-#searchList {
-  max-height: 50vh !important;
+#searchedList {
+  max-height: 40vh !important;
   overflow-y: scroll;
 }
 
-#searchList li {
+#searchedList li {
   list-style-type: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 0.8em;
 }
 
 .arrow {
@@ -201,29 +204,15 @@ header nav li i {
   bottom: 94px;
 }
 
-@media screen and (min-width: 992px) {
-  header {
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: black;
-  }
+/* SECTION PLAYER */
+audio#musicSource {
+  height: 30px;
+  width: 100%;
+}
 
-  header nav li i {
-    font-size: 15px;
-  }
-
-  aside {
-    height: 100vh;
-    position: fixed;
-    top: 0px;
-    right: 0;
-  }
-
-  #player {
-    bottom: 0px;
-  }
+#btnPlay {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #player {
@@ -268,11 +257,6 @@ header nav li i {
 
 .audio-info h4 {
   font-weight: bold;
-}
-
-audio {
-  outline: none;
-  width: 100%;
 }
 
 .input-container {
@@ -351,7 +335,8 @@ audio {
   width: 50%; /* Adatta il player alla larghezza del contenitore */
 }
 .custom-audio-player::-webkit-media-controls-panel {
-  background-color: #181818; /* Cambia il colore di sfondo del player */
+  background-color: #181818;
+  appearance: none; /* Cambia il colore di sfondo del player */
 }
 .custom-audio-player::-webkit-media-controls-play-button,
 .custom-audio-player::-webkit-media-controls-current-time-display,
@@ -360,20 +345,31 @@ audio {
 .custom-audio-player::-webkit-media-controls-volume-slider {
   background-color: #181818; /* Cambia il colore dei pulsanti */
   color: white; /* Cambia il colore del testo e delle icone */
+  appearance: none;
 }
 .custom-audio-player::-webkit-media-controls-mute-button,
 .custom-audio-player::-webkit-media-controls-fullscreen-button {
   background-color: #181818; /* Cambia il colore dei pulsanti mute e fullscreen */
+  appearance: none;
 }
 .custom-audio-player::-webkit-media-controls-timeline-container {
-  background-color: #ffffff; /* Cambia il colore della barra temporale */
+  background-color: red; /* Cambia il colore della barra temporale */
 }
 
 /* homepage cards in js */
 
+#bigCard {
+  background: linear-gradient(45deg, black, transparent);
+  padding-bottom: 2em;
+  border: 0;
+}
+
+.secondCard {
+  background-color: #2B2B2B;
+}
+
 .card {
-  background-color: #343a40;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease; 
 }
 .cart-title {
   /* background dinamico titolo card */
@@ -382,13 +378,21 @@ audio {
 }
 
 .card:hover {
-  background-color: #1d2124;
-  transform: scale(1.05);
+  background-color: #2B2B2B;  
+  transform: scale(1.05); 
   cursor: pointer;
 }
+
+.cardMini {
+  background-color: #2B2B2B;
+}
+
+.cardMini:hover {
+  border: 0.5px solid rgba(0, 0, 0, 0.356);
+}
+
 .cart-title:hover {
-  color: black;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #2B2B2B;
   border-radius: 10px;
   padding: 0.1em; /* sorta di animazione dell hover */
   cursor: pointer;
@@ -451,10 +455,30 @@ audio {
 }
 
 .card:hover .play2-button {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1.1);
+  opacity: 1; 
+  visibility: visible; 
+  transform: scale(1.1); 
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+   
+}
+
+.card-img-top {
+  min-width: 168px;
+}
+
+#artistDetails {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.trackTitle,
+#showMore {
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: #181818;
 }
 
 @media screen and (max-width: 768px) {
@@ -500,7 +524,62 @@ audio {
     width: 30px;
     height: 30px;
   }
+
+  .hide-mobile {
+    display: none;
+  }
+
+  #bigCard {
+    display: none;
+  }
+
+  /* albumpage */
+
+  .numberLine, .numberVisual, .numberTime {
+    display: none;
+  }
+
+  .titleSong {
+    white-space: nowrap; /* Impedisce il testo di andare a capo */
+  }
+
+  #albumImage {
+    align-items: center;
+  }
+
+  .bigCardDiv {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
 }
+
+
+@media screen and (min-width: 992px) {
+  header {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+  }
+
+  header nav li i {
+    font-size: 15px;
+  }
+
+  aside {
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    right: 0;
+  }
+
+  #player {
+    bottom: 0px;
+  }
+}
+
 
 @media (min-width: 1200px) {
   .container {
@@ -517,35 +596,4 @@ audio {
     border-radius: 15px;
     transform: none;
   }
-}
-
-/* #imgtext {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px 20px 0;
-} */
-
-#artistDetails {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.trackTitle,
-#showMore {
-  cursor: pointer;
-}
-
-.menuItem:hover {
-  background-color: #181818;
-}
-
-.custom-card img {
-  position: absolute;
-  right: 1px;
-  width: 100px;
-  height: auto;
-  border-radius: 15px;
 }
