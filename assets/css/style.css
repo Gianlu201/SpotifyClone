@@ -126,13 +126,16 @@ header nav li i {
   border-bottom: 1px solid #d3d3d333;
 }
 
-#searchList {
-  max-height: 50vh !important;
+#searchedList {
+  max-height: 40vh !important;
   overflow-y: scroll;
 }
 
-#searchList li {
+#searchedList li {
   list-style-type: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 0.8em;
 }
 
 .arrow {
@@ -201,6 +204,17 @@ header nav li i {
   bottom: 94px;
 }
 
+/* SECTION PLAYER */
+audio#musicSource {
+  height: 30px;
+  width: 100%;
+}
+
+#btnPlay {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 #player {
   position: fixed;
   bottom: 0;
@@ -243,11 +257,6 @@ header nav li i {
 
 .audio-info h4 {
   font-weight: bold;
-}
-
-audio {
-  outline: none;
-  width: 100%;
 }
 
 .input-container {
@@ -323,7 +332,8 @@ audio {
   width: 50%; /* Adatta il player alla larghezza del contenitore */
 }
 .custom-audio-player::-webkit-media-controls-panel {
-  background-color: #181818; /* Cambia il colore di sfondo del player */
+  background-color: #181818;
+  appearance: none; /* Cambia il colore di sfondo del player */
 }
 .custom-audio-player::-webkit-media-controls-play-button,
 .custom-audio-player::-webkit-media-controls-current-time-display,
@@ -332,13 +342,15 @@ audio {
 .custom-audio-player::-webkit-media-controls-volume-slider {
   background-color: #181818; /* Cambia il colore dei pulsanti */
   color: white; /* Cambia il colore del testo e delle icone */
+  appearance: none;
 }
 .custom-audio-player::-webkit-media-controls-mute-button,
 .custom-audio-player::-webkit-media-controls-fullscreen-button {
   background-color: #181818; /* Cambia il colore dei pulsanti mute e fullscreen */
+  appearance: none;
 }
 .custom-audio-player::-webkit-media-controls-timeline-container {
-  background-color: #ffffff; /* Cambia il colore della barra temporale */
+  background-color: red; /* Cambia il colore della barra temporale */
 }
 
 /* homepage cards in js */
@@ -384,16 +396,17 @@ audio {
 }
 
 .new-col:hover img {
-  transform: scale(1.1); 
-  transition: transform 0.3s ease-in-out; 
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }
 
- .new-col img {
-  transform: scale(1); 
-  transition: transform 0.3s ease-in-out; 
+.new-col img {
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
 }
 
-.play-button {                /* bottone nel buonasera */
+.play-button {
+  /* bottone nel buonasera */
   position: absolute;
   top: 30px;
   right: 10px;
@@ -403,7 +416,7 @@ audio {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1db954; 
+  background-color: #1db954;
   color: white;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -416,9 +429,10 @@ audio {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-.play2-button {     /* bottone nelle card grandi */
-  opacity: 0; 
-  visibility: hidden; 
+.play2-button {
+  /* bottone nelle card grandi */
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -428,12 +442,13 @@ audio {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1db954; 
+  background-color: #1db954;
   color: white;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: opacity 0.3s ease, visibility 0.3s ease,
+    transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .card:hover .play2-button {
@@ -462,8 +477,6 @@ audio {
 .menuItem:hover {
   background-color: #181818;
 }
-
-
 
 @media screen and (max-width: 768px) {
   #player {
@@ -496,17 +509,17 @@ audio {
 
   .category-card img {
     width: 80px; /* Riduci le dimensioni dell'immagine */
-    height: auto
+    height: auto;
   }
 
   .play2-button {
     top: 90%;
   }
 
-  .play2-button, .play-button {
+  .play2-button,
+  .play-button {
     width: 30px;
     height: 30px;
-    
   }
 
   .hide-mobile {
