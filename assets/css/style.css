@@ -468,7 +468,6 @@ audio#musicSource {
   background-size: cover;
 }
 
-
 .trackTitle,
 #showMore,
 .bi-heart,
@@ -573,7 +572,6 @@ audio#musicSource {
   #player {
     bottom: 0px;
   }
-
 }
 @media (min-width: 1200px) {
   .container {
@@ -591,7 +589,6 @@ audio#musicSource {
     transform: none;
   }
 }
-
 
 #resultContainer .category-card {
   background-color: #2a2a2a;
@@ -648,40 +645,38 @@ audio#musicSource {
   .card-body a {
     font-size: 1.5vw;
   }
-
 }
 
 ::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #4D4D4D; 
+  background: #4d4d4d;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; 
-
+  background: #888;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #d3d3d3;
 }
 
 .row-hover:hover {
-  background-color: #2B2727; 
-  cursor: pointer; 
+  background-color: #2b2727;
+  cursor: pointer;
 }
 
 .row-hover .track-num {
-  display: inline-block; 
+  display: inline-block;
 }
 
 .row-hover .play-icon {
-  display: none; 
+  display: none;
 }
 
 .row-hover:hover .track-num {
-  display: none; 
+  display: none;
 }
 
 .row-hover:hover .play-icon {
@@ -708,3 +703,4 @@ audio#musicSource {
     width: calc(33.333% - 20px); /* 3 colonne */
   }
 }
+
