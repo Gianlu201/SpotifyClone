@@ -269,10 +269,10 @@ audio#musicSource {
   width: 100%;
 }
 
-.input-container i {
+.input-container i, #btnSearch {
   position: absolute;
   top: 50%;
-  left: 20px;
+  left: 5px;
   transform: translateY(-50%);
   color: #e9e9e9 !important;
 }
