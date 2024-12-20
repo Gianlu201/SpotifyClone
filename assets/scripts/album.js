@@ -234,15 +234,26 @@ function printTracks(tracks) {
     newArtist.href = `artistPage.html?id=${tracks[i].artist.id}`;
 
     const newRank = document.createElement('p');
-    newRank.classList.add('col-3', 'numberVisual');
+    newRank.classList.add(
+      'col-3',
+      'numberVisual',
+      'align-content-center',
+      'm-0'
+    );
     newRank.innerText = tracks[i].rank;
 
     const newTime = document.createElement('p');
-    newTime.classList.add('col-1', 'pe-4', 'numberTime');
+    newTime.classList.add(
+      'col-1',
+      'pe-4',
+      'numberTime',
+      'align-content-center',
+      'm-0'
+    );
     newTime.innerText = getTimeFormat(tracks[i].duration);
 
     const newHeartDiv = document.createElement('div');
-    newHeartDiv.classList.add('col-1', 'heartDiv');
+    newHeartDiv.classList.add('col-1', 'heartDiv', 'align-content-center');
 
     const heart = document.createElement('span');
     if (taken) {
@@ -453,7 +464,7 @@ function setEmptyHearth(
   id
 ) {
   const myRow = document.querySelector(
-    `#tracksList .row:nth-of-type(${index + 1}) div span i`
+    `#trackList .row:nth-of-type(${index + 1}) .heartDiv span i`
   );
   myRow.classList.remove('bi-heart-fill', 'text-success');
   myRow.classList.add('bi-heart');
