@@ -105,17 +105,30 @@
                   class="nav-link p-1"
                   aria-current="page"
                   href="javascript:void(0)"
-                  ><i class="bi bi-plus-square m-2"></i>Crea playlist</a
+                  ><img
+                    src="assets/imgs/plusSquareimg.png"
+                    height="20pxs"
+                    class="mx-2"
+                  />Crea playlist</a
                 >
               </li>
               <li class="nav-item">
                 <a class="nav-link p-1" href="mostLike.html"
-                  ><i class="bi bi-heart-fill m-2"></i>Brani che ti piacciono</a
+                  ><img
+                    src="assets/imgs/Mostlikeimg.png"
+                    height="20px"
+                    class="mx-2"
+                  />
+                  Brani che ti piacciono</a
                 >
               </li>
               <li class="nav-item">
                 <a class="nav-link p-1" href="javascript:void(0)"
-                  ><i class="bi bi-bookmark-fill m-2"></i>I tuoi episodi</a
+                  ><img
+                    src="assets/imgs/yourEpisodeimg.png"
+                    height="20px"
+                    class="mx-2"
+                  />I tuoi episodi</a
                 >
               </li>
             </ul>
@@ -149,61 +162,101 @@
           <h3 id="titleSfoglia" class="mb-4 text-center">Sfoglia tutto</h3>
           <div id="sectionSfoglia" class="row g-3">
             <div class="col-6">
-              <div class="category-card" style="background-color: #e13300" onclick="search('Pop')">
+              <div
+                class="category-card"
+                style="background-color: #e13300"
+                onclick="search('Pop')"
+              >
                 Pop
                 <img src="assets/imgs/search/image-2.jpg" alt="Podcast" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #1e3264" onclick="search('Love')">
+              <div
+                class="category-card"
+                style="background-color: #1e3264"
+                onclick="search('Love')"
+              >
                 Canzoni d'amore
                 <img src="assets/imgs/search/image-3.jpg" alt="Create" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #e8115b" onclick="search('Summer')">
+              <div
+                class="category-card"
+                style="background-color: #e8115b"
+                onclick="search('Summer')"
+              >
                 Hit Estive
                 <img src="assets/imgs/search/image-4.jpg" alt="Nuove" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #158a08" onclick="search('Christmas')">
+              <div
+                class="category-card"
+                style="background-color: #158a08"
+                onclick="search('Christmas')"
+              >
                 Buon Natale
                 <img src="assets/imgs/search/image-5.jpg" alt="Pop" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #bc8f00" onclick="search('rock')">
+              <div
+                class="category-card"
+                style="background-color: #bc8f00"
+                onclick="search('rock')"
+              >
                 Rock 'n' Roll
                 <img src="assets/imgs/search/image-6.jpg" alt="HipHop" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #e13300" onclick="search('disco')">
+              <div
+                class="category-card"
+                style="background-color: #e13300"
+                onclick="search('disco')"
+              >
                 Dance/ Elettronica
                 <img src="assets/imgs/search/image-7.jpg" alt="Dance" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #e8115b" onclick="search('90')">
-               Hit anni '90
+              <div
+                class="category-card"
+                style="background-color: #e8115b"
+                onclick="search('90')"
+              >
+                Hit anni '90
                 <img src="assets/imgs/search/image-8.jpg" alt="Latina" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #8a3a8a" onclick="search('italia')">
+              <div
+                class="category-card"
+                style="background-color: #8a3a8a"
+                onclick="search('italia')"
+              >
                 Hit Italiane
                 <img src="assets/imgs/search/image-9.jpg" alt="Classifiche" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #e8115b" onclick="search('car')">
+              <div
+                class="category-card"
+                style="background-color: #e8115b"
+                onclick="search('car')"
+              >
                 Canzoni in viaggio
                 <img src="assets/imgs/search/image-10.jpg" alt="Latina" />
               </div>
             </div>
             <div class="col-6">
-              <div class="category-card" style="background-color: #8a3a8a" onclick="search('relax')">
+              <div
+                class="category-card"
+                style="background-color: #8a3a8a"
+                onclick="search('relax')"
+              >
                 Relax
                 <img src="assets/imgs/search/image-11.jpg" alt="Classifiche" />
               </div>
@@ -277,7 +330,10 @@
     <section id="player" class="d-flex justify-content-between">
       <div class="left">
         <div class="audio-container">
-          <img id="trackImage" src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg" />
+          <img
+            id="trackImage"
+            src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg"
+          />
           <div class="audio-info">
             <h4 id="trackName">Seleziona un brano da ascoltare!</h4>
             <p id="nomeArtista">FALLO!</p>
@@ -289,7 +345,7 @@
           </div>
         </div>
       </div>
-  
+
       <div id="playerBox" class="w-75">
         <div id="buttonsBox" class="d-flex justify-content-center">
           <button type="button" id="btnShuffle" class="btn">
@@ -311,7 +367,7 @@
         </div>
         <audio id="musicSource" class="custom-audio-player" controls></audio>
       </div>
-  
+
       <div class="right">
         <!-- se lo tolgo il player va a sinistra ????? -->
       </div>
