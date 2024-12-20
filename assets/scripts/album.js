@@ -144,7 +144,7 @@ function printTracks(tracks) {
 
   for (let i = 0; i < tracks.length; i++) {
     const newRow = document.createElement('div');
-    newRow.classList.add('row');
+    newRow.classList.add('row', 'row-hover');
     newRow.setAttribute(
       'onclick',
       `setPlayer("${tracks[i].preview}", "${tracks[i].title}", "${tracks[i].artist.name}", "${tracks[i].album.cover_small}")`
@@ -156,9 +156,14 @@ function printTracks(tracks) {
       'col-1',
       'align-content-center',
       'mb-0',
-      'numberLine'
+      'numberLine',
+      'track-num'
     );
     newParagraph.innerText = i + 1;
+// icona play
+    const newPlayIcon = document.createElement('span');
+    newPlayIcon.classList.add('col-1', 'play-icon');
+    newPlayIcon.innerHTML = `<i class="bi bi-play-fill"></i>`
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('col-6');
@@ -181,6 +186,7 @@ function printTracks(tracks) {
     newTime.innerText = getTimeFormat(tracks[i].duration);
 
     newRow.appendChild(newParagraph);
+    newRow.appendChild(newPlayIcon); 
     newDiv.appendChild(newTitle);
     newDiv.appendChild(newArtist);
     newRow.appendChild(newDiv);
