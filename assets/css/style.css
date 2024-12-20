@@ -176,7 +176,7 @@ header nav li i {
 }
 
 .card-img-top {
-  max-width: 160px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -709,9 +709,6 @@ audio#musicSource {
   
 }
 
-.cardMini {
-  margin: 10px; /* Aggiungi spaziatura */
-}
 @media (max-width: 575.98px) {
   .cardMini {
     width: calc(100% - 20px); /* 1 colonna */
