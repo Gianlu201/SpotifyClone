@@ -123,7 +123,7 @@ function showTracks() {
     newImg.setAttribute('width', '35px');
 
     const newTitle = document.createElement('span');
-    newTitle.classList.add('col-5', 'trackTitle');
+    newTitle.classList.add('col-9', 'col-lg-5', 'trackTitle');
     newTitle.innerText = artistTracks[i].title_short;
     newTitle.setAttribute(
       'onclick',
@@ -146,11 +146,11 @@ function showTracks() {
     }
 
     const newListeners = document.createElement('span');
-    newListeners.classList.add('col-2', 'text-secondary', 'text-end');
+    newListeners.classList.add('col-2', 'text-secondary', 'text-end', 'd-none', 'd-md-block');
     newListeners.innerText = artistTracks[i].rank;
 
     const newTime = document.createElement('span');
-    newTime.classList.add('col-2', 'text-secondary', 'text-end');
+    newTime.classList.add('col-2', 'text-secondary', 'text-end', 'd-none', 'd-md-block');
     newTime.innerText = getTimeFormat(artistTracks[i].duration);
 
     newDiv.appendChild(newImg);
