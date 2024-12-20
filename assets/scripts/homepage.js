@@ -7,6 +7,9 @@ const goodFeelings = document.getElementById('goodFeelings');
 const musicSource = document.getElementById('musicSource');
 const searchedList = document.getElementById('searchedList');
 
+const btnPlay = document.getElementById('btnPlay');
+const btnNext = document.getElementById('btnNext');
+
 const SRC_URL = 'https://striveschool-api.herokuapp.com/api/deezer/search?q=';
 const ARTIST_URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
 const ALBUM_URL = 'https://striveschool-api.herokuapp.com/api/deezer/album/';
@@ -39,7 +42,6 @@ function init() {
 
   getFromLocalStorage();
   updateHistoryList();
-  adjustColumnWidth();
 }
 
 async function searchRequest(URL, reserchKey, list) {
@@ -201,23 +203,6 @@ function printSuggests(list) {
       'px-3',
       'cardMini'
     );
-// RESPONSIVE
-    function adjustColumnWidth() {
-      const newCols = document.querySelectorAll('.cardMini'); 
-      newCols.forEach((newCol) => {
-        if (window.innerWidth >= 992) {
-          newCol.style.width = 'calc(33.333% - 20px)';
-        } else if (window.innerWidth >= 576) {
-          newCol.style.width = 'calc(50% - 20px)';
-        } else {
-          newCol.style.width = 'calc(100% - 20px)';
-        }
-      });
-    }
-
-    
-    // window.addEventListener('load', adjustColumnWidth);
-    // window.addEventListener('resize', adjustColumnWidth);
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('me-2');
@@ -317,6 +302,33 @@ function printList(list, target) {
   }
 }
 
+function getTimeFormat(val) {
+  let min = 0;
+  let sec;
+
+  if (val > 60) {
+    min = Math.floor(val / 60);
+  }
+
+  sec = val - min * 60;
+  if (sec < 10) {
+    sec = '0' + sec;
+  }
+
+  return `${min}:${sec}`;
+}
+
+function playRandomTrack() {
+  const myTrack = musicList3[Math.floor(Math.random() * musicList3.length)];
+
+  setPlayer(
+    myTrack.preview,
+    myTrack.title_short,
+    myTrack.artist.name,
+    myTrack.album.cover_small
+  );
+}
+
 function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
   musicSource.src = link;
@@ -324,13 +336,36 @@ function setPlayer(link, title, artist, imgUrl) {
 
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
-  document.getElementById('artistName').innerText = artist;
+  document.getElementById('nomeArtista').innerHTML = artist;
+  setPause();
 
   const myTrack = new Track(link, title, artist, imgUrl);
   myHistory.push(myTrack);
   updateHistory(myTrack);
   updateLocalStorage();
   updateHistoryList();
+}
+
+btnPlay.addEventListener('click', () => {
+  const pause = '<i class="bi bi-pause-fill fs-1"></i>';
+  const play = '<i class="bi bi-play-fill fs-1"></i>';
+  if (btnPlay.innerHTML == play) {
+    document.getElementById('musicSource').play();
+    setPause();
+  } else if (btnPlay.innerHTML == pause) {
+    document.getElementById('musicSource').pause();
+    setPlay();
+  }
+});
+
+btnNext.addEventListener('click', playRandomTrack);
+
+function setPlay() {
+  btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
+}
+
+function setPause() {
+  btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
 }
 
 function getFromLocalStorage() {

@@ -5,7 +5,7 @@ const numeroAscolti = document.getElementById('numeroAscolti');
 const tracksList = document.getElementById('tracksList');
 const artistImg = document.getElementById('artistImg');
 const artistDetails = document.getElementById('artistDetails');
-const artistName = document.getElementById('artistName');
+const nomeArtista = document.getElementById('nomeArtista');
 const showMore = document.getElementById('showMore');
 const btnRandomPlay = document.getElementById('randomPlay');
 const musicSource = document.getElementById('musicSource');
@@ -257,7 +257,7 @@ function setPlayer(link, title, artist, imgUrl) {
 
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
-  document.getElementById('artistName').innerText = artist;
+  document.getElementById('nomeArtista').innerHTML = artist;
   setPause();
 
   const myTrack = new Track(link, title, artist, imgUrl);
