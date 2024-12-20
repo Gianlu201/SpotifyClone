@@ -39,7 +39,6 @@ function init() {
 
   getFromLocalStorage();
   updateHistoryList();
-  adjustColumnWidth();
 }
 
 async function searchRequest(URL, reserchKey, list) {
@@ -190,34 +189,14 @@ function printSuggests(list) {
   for (let i = 0; i < 6; i++) {
     const newCol = document.createElement('div');
     newCol.classList.add(
-      'col-12',
       'col-sm-6',
       'col-lg-4',
       'd-flex',
       'align-items-center',
       'position-relative',
       'mb-3',
-      'me-3',
-      'px-3',
       'cardMini'
     );
-// RESPONSIVE
-    function adjustColumnWidth() {
-      const newCols = document.querySelectorAll('.cardMini'); 
-      newCols.forEach((newCol) => {
-        if (window.innerWidth >= 992) {
-          newCol.style.width = 'calc(33.333% - 20px)';
-        } else if (window.innerWidth >= 576) {
-          newCol.style.width = 'calc(50% - 20px)';
-        } else {
-          newCol.style.width = 'calc(100% - 20px)';
-        }
-      });
-    }
-
-    
-    // window.addEventListener('load', adjustColumnWidth);
-    // window.addEventListener('resize', adjustColumnWidth);
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('me-2');
@@ -258,6 +237,23 @@ function printSuggests(list) {
     suggestsBox.appendChild(newCol);
   }
 }
+
+// RESPONSIVE
+// function adjustColumnWidth() {
+//   const newCols = document.querySelectorAll('.cardMini');
+//   newCols.forEach((newCol) => {
+//     if (window.innerWidth >= 992) {
+//       newCol.style.width = 'calc(33.333% - 20px)';
+//     } else if (window.innerWidth >= 576) {
+//       newCol.style.width = 'calc(50% - 20px)';
+//     } else {
+//       newCol.style.width = 'calc(100% - 20px)';
+//     }
+//   });
+// }
+
+// window.addEventListener('load', adjustColumnWidth);
+// window.addEventListener('resize', adjustColumnWidth);
 
 function printList(list, target) {
   target.innerHTML = '';

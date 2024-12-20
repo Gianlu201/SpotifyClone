@@ -104,15 +104,11 @@ function showTracks() {
     });
 
     const newRow = document.createElement('div');
-    newRow.classList.add('row', 'p-2', 'row-hover');
+    newRow.classList.add('row', 'p-2');
 
     const newNum = document.createElement('span');
-    newNum.classList.add('col-1', 'track-num');
+    newNum.classList.add('col-1');
     newNum.innerText = i + 1;
-
-    const newPlayIcon = document.createElement('span');
-    newPlayIcon.classList.add('col-1', 'play-icon');
-    newPlayIcon.innerHTML = `<i class="bi bi-play-fill"></i>`;
 
     const newDiv = document.createElement('a');
     newDiv.href = `album.html?id=${artistTracks[i].album.id}`;
@@ -155,7 +151,6 @@ function showTracks() {
 
     newDiv.appendChild(newImg);
     newRow.appendChild(newNum);
-    newRow.appendChild(newPlayIcon);
     newRow.appendChild(newDiv);
     newRow.appendChild(newTitle);
     newHeartDiv.appendChild(heart);
@@ -361,6 +356,7 @@ function setFilledHearth(index) {
   );
   myRow.classList.remove('bi-heart');
   myRow.classList.add('bi-heart-fill', 'text-success');
+  myRow.parentElement.setAttribute('onclick', `removeLike(${index}, 0)`);
 }
 
 function setEmptyHearth(index) {
@@ -369,6 +365,7 @@ function setEmptyHearth(index) {
   );
   myRow.classList.remove('bi-heart-fill', 'text-success');
   myRow.classList.add('bi-heart');
+  myRow.parentElement.setAttribute('onclick', `addLike(${index}, 0)`);
 }
 
 async function getMyFav() {
