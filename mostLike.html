@@ -115,17 +115,72 @@
             </ul>
           </div>
         </div>
-        <div class="d-flex bg-transparent align-items-end">
-          <img src="assets/imgs/Mostlikeimg.png" height="200px" />
-          <div class="card-body ps-lg-3 pt-lg-4 bigCardDiv">
-            <p class="h6 fs-6">Playlist</p>
-            <h5 class="display-4  " style="font-weight: 900;">Brani Che Ti Piacciono</h5>
-            <a id="artistLink" href="javascript:void(0);" class="btn btn-transparent ps-0">
-              <img src="assets/imgs/pngwing.com.png" width="20px" class="rounded-circle pe-1" />
-              <span style="font-size: 15px">Tommaso Di Berto Mancini ·
-                <span id="playlistCounter"></span> Brani
-              </span>
-            </a>
+      </header>
+
+      <main class="col-lg-8 order-0 mb-5" id="mostLikeMain">
+        <div class="container pb-3">
+          <div class="d-flex justify-content-between my-3">
+            <div>
+              <a href="javascript:history.back()"
+                ><i class="bi bi-chevron-left arrow"></i
+              ></a>
+              <a href="javascript:history.forward()"
+                ><i class="bi bi-chevron-right arrow"></i
+              ></a>
+            </div>
+            <div class="profile">
+              <a
+                class="nav-link dropdown-toggle"
+                href="javascript:void(0);"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img src="assets/imgs/pngwing.com.png" alt="" id="profileImg" />
+                Tommaso Di Berto Mancini
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="javascript:void(0);"
+                    >Profilo</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="javascript:void(0);"
+                    >Impostazioni</a
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="javascript:void(0);">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="d-flex bg-transparent">
+            <img src="assets/imgs/Mostlikeimg.png" height="160px" />
+            <div class="card-body ps-lg-3 pt-lg-4 bigCardDiv">
+              <p class="h6 fs-6">PLAYLIST</p>
+              <h5 class="card-title h1 fw-bolder">Brani Che Ti Piacciono</h5>
+              <a
+                id="artistLink"
+                href="javascript:void(0);"
+                class="btn btn-transparent ps-0"
+              >
+                <img
+                  src="assets/imgs/pngwing.com.png"
+                  width="20px"
+                  class="rounded-circle pe-1"
+                />
+                <span
+                  >Tommaso Di Berto Mancini -
+                  <span id="playlistCounter"></span> Brani</span
+                >
+              </a>
+            </div>
+
           </div>
         </div>
       </div>
