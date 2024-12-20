@@ -132,12 +132,15 @@ function showTracks() {
     const heart = document.createElement('span');
     if (taken) {
       heart.innerHTML = `<i class="bi bi-heart-fill text-success"></i>`;
-      heart.setAttribute('onclick', `removeLike(${myId}, ${i})`);
+      heart.setAttribute(
+        'onclick',
+        `removeLike("${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.title}", "${artistTracks[i].duration}", "${artistTracks[i].rank}", "${artistTracks[i].artist.id}", "${artistTracks[i].album.cover_small}", "${artistTracks[i].album.id}", "${artistTracks[i].preview}", ${i}, ${myId})`
+      );
     } else {
       heart.innerHTML = `<i class="bi bi-heart"></i>`;
       heart.setAttribute(
         'onclick',
-        `addLike("${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.title}", "${artistTracks[i].duration}", "${artistTracks[i].rank}", "${artistTracks[i].artist.id}", "${artistTracks[i].album.cover_small}", "${artistTracks[i].album.id}", "${artistTracks[i].preview}", ${i})`
+        `addLike("${artistTracks[i].title_short}", "${artistTracks[i].artist.name}", "${artistTracks[i].album.title}", "${artistTracks[i].duration}", "${artistTracks[i].rank}", "${artistTracks[i].artist.id}", "${artistTracks[i].album.cover_small}", "${artistTracks[i].album.id}", "${artistTracks[i].preview}", ${i}, ${myId})`
       );
     }
 
@@ -298,6 +301,7 @@ function updateLocalStorage() {
   localStorage.setItem('history', JSON.stringify(myHistory));
 }
 
+// 10 parametri
 function addLike(
   title,
   artist,
@@ -308,7 +312,8 @@ function addLike(
   albumCover,
   albumId,
   preview,
-  index
+  index,
+  id
 ) {
   const myDuration = parseInt(duration);
   const myRank = parseInt(rank);
@@ -327,7 +332,19 @@ function addLike(
     preview
   );
 
-  setFilledHearth(index);
+  setFilledHearth(
+    title,
+    artist,
+    album,
+    duration,
+    rank,
+    artistId,
+    albumCover,
+    albumId,
+    preview,
+    index,
+    id
+  );
 
   addToLiked(myFavTrack);
 }
@@ -350,22 +367,52 @@ async function addToLiked(obj) {
   }
 }
 
-function setFilledHearth(index) {
+function setFilledHearth(
+  title,
+  artist,
+  album,
+  duration,
+  rank,
+  artistId,
+  albumCover,
+  albumId,
+  preview,
+  index,
+  id
+) {
   const myRow = document.querySelector(
     `#tracksList .row:nth-of-type(${index + 1}) div span i`
   );
   myRow.classList.remove('bi-heart');
   myRow.classList.add('bi-heart-fill', 'text-success');
-  myRow.parentElement.setAttribute('onclick', `removeLike(${index}, 0)`);
+  myRow.parentElement.setAttribute(
+    'onclick',
+    `removeLike("${title}", "${artist}", "${album}", "${duration}", "${rank}", "${artistId}", "${albumCover}", "${albumId}", "${preview}", ${index}, ${id})`
+  );
 }
 
-function setEmptyHearth(index) {
+function setEmptyHearth(
+  title,
+  artist,
+  album,
+  duration,
+  rank,
+  artistId,
+  albumCover,
+  albumId,
+  preview,
+  index,
+  id
+) {
   const myRow = document.querySelector(
     `#tracksList .row:nth-of-type(${index + 1}) div span i`
   );
   myRow.classList.remove('bi-heart-fill', 'text-success');
   myRow.classList.add('bi-heart');
-  myRow.parentElement.setAttribute('onclick', `addLike(${index}, 0)`);
+  myRow.parentElement.setAttribute(
+    'onclick',
+    `addLike("${title}", "${artist}", "${album}", "${duration}", "${rank}", "${artistId}", "${albumCover}", "${albumId}", "${preview}", ${index})`
+  );
 }
 
 async function getMyFav() {
@@ -381,7 +428,20 @@ async function getMyFav() {
   }
 }
 
-async function removeLike(id, index) {
+// 11 parametri
+async function removeLike(
+  title,
+  artist,
+  album,
+  duration,
+  rank,
+  artistId,
+  albumCover,
+  albumId,
+  preview,
+  index,
+  id
+) {
   console.log(id);
   try {
     const response = await fetch(
@@ -390,7 +450,19 @@ async function removeLike(id, index) {
         method: 'DELETE',
       }
     );
-    setEmptyHearth(index);
+    setEmptyHearth(
+      title,
+      artist,
+      album,
+      duration,
+      rank,
+      artistId,
+      albumCover,
+      albumId,
+      preview,
+      index,
+      id
+    );
   } catch (error) {
     console.log(error);
   }
