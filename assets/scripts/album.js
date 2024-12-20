@@ -123,7 +123,7 @@ function printTracks(tracks) {
     newParagraph.innerText = i + 1;
 // icona play
     const newPlayIcon = document.createElement('span');
-    newPlayIcon.classList.add('col-1', 'play-icon');
+    newPlayIcon.classList.add('col-1', 'px-3', 'align-content-center', 'mb-0', 'play-icon');
     newPlayIcon.innerHTML = `<i class="bi bi-play-fill"></i>`
 
     const newDiv = document.createElement('div');

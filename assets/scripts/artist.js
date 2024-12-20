@@ -107,11 +107,11 @@ function showTracks() {
     newRow.classList.add('row', 'p-2', 'row-hover');
 
     const newNum = document.createElement('span');
-    newNum.classList.add('col-1', 'track-num');
+    newNum.classList.add('col-1', 'px-3', 'align-content-center', 'mb-0','track-num');
     newNum.innerText = i + 1;
 
     const newPlayIcon = document.createElement('span');
-    newPlayIcon.classList.add('col-1', 'play-icon');
+    newPlayIcon.classList.add('col-1','px-3', 'align-content-center', 'mb-0', 'play-icon');
     newPlayIcon.innerHTML = `<i class="bi bi-play-fill"></i>`;
 
     const newDiv = document.createElement('a');
