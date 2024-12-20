@@ -462,9 +462,11 @@ audio#musicSource {
 }
 
 #artistDetails {
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 500px;
+  margin-bottom: 20px;
 }
 
 .trackTitle,
