@@ -104,11 +104,15 @@ function showTracks() {
     });
 
     const newRow = document.createElement('div');
-    newRow.classList.add('row', 'p-2');
+    newRow.classList.add('row', 'p-2', 'row-hover');
 
     const newNum = document.createElement('span');
-    newNum.classList.add('col-1');
+    newNum.classList.add('col-1', 'track-num');
     newNum.innerText = i + 1;
+
+    const newPlayIcon = document.createElement('span');
+    newPlayIcon.classList.add('col-1', 'play-icon');
+    newPlayIcon.innerHTML = `<i class="bi bi-play-fill"></i>`;
 
     const newDiv = document.createElement('a');
     newDiv.href = `album.html?id=${artistTracks[i].album.id}`;
@@ -151,6 +155,7 @@ function showTracks() {
 
     newDiv.appendChild(newImg);
     newRow.appendChild(newNum);
+    newRow.appendChild(newPlayIcon);
     newRow.appendChild(newDiv);
     newRow.appendChild(newTitle);
     newHeartDiv.appendChild(heart);

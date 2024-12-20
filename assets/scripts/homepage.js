@@ -39,6 +39,7 @@ function init() {
 
   getFromLocalStorage();
   updateHistoryList();
+  adjustColumnWidth();
 }
 
 async function searchRequest(URL, reserchKey, list) {
@@ -145,7 +146,6 @@ function printBigCard(element) {
       element.album.cover_small
     );
   });
-  
 
   const newBtnSave = document.createElement('button');
   newBtnSave.type = 'button';
@@ -170,7 +170,8 @@ function printBigCard(element) {
 
   bigCard.appendChild(newRow);
 
-  bigCard.addEventListener('click', () => {           //funzione che permette di cliccare la BIGCARD
+  bigCard.addEventListener('click', () => {
+    //funzione che permette di cliccare la BIGCARD
     window.location.href = `album.html?id=${element.album.id}`;
   });
 }
@@ -190,18 +191,33 @@ function printSuggests(list) {
     const newCol = document.createElement('div');
     newCol.classList.add(
       'col-12',
-      'col-md-6',
+      'col-sm-6',
       'col-lg-4',
       'd-flex',
       'align-items-center',
       'position-relative',
       'mb-3',
-      'me-3', 
+      'me-3',
       'px-3',
       'cardMini'
     );
+// RESPONSIVE
+    function adjustColumnWidth() {
+      const newCols = document.querySelectorAll('.cardMini'); 
+      newCols.forEach((newCol) => {
+        if (window.innerWidth >= 992) {
+          newCol.style.width = 'calc(33.333% - 20px)';
+        } else if (window.innerWidth >= 576) {
+          newCol.style.width = 'calc(50% - 20px)';
+        } else {
+          newCol.style.width = 'calc(100% - 20px)';
+        }
+      });
+    }
 
-    newCol.style.width = 'calc(33.333% - 20px)';
+    
+    // window.addEventListener('load', adjustColumnWidth);
+    // window.addEventListener('resize', adjustColumnWidth);
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('me-2');
@@ -212,7 +228,7 @@ function printSuggests(list) {
       newDiv.classList.add('collage');
       for (let j = 0; j < 4; j++) {
         const newImg = document.createElement('img');
-        newImg.src = `assets/imgs/main/image-${10 + i + j}.jpg`; 
+        newImg.src = `assets/imgs/main/image-${10 + i + j}.jpg`;
         newDiv.appendChild(newImg);
         newTitle.innerText =
           collageTitles[Math.floor(Math.random() * collageTitles.length)];
@@ -248,7 +264,7 @@ function printList(list, target) {
 
   for (let i = 0; i < 6; i++) {
     const newCard = document.createElement('div');
-    newCard.classList.add('card', 'secondCard', 'position-relative'); 
+    newCard.classList.add('card', 'secondCard', 'position-relative');
 
     if (i >= 3) {
       newCard.classList.add('hide-mobile');
@@ -256,7 +272,6 @@ function printList(list, target) {
 
     const newAImg = document.createElement('a');
     newAImg.href = `album.html?id=${list[i + 8].album.id}`;
-
 
     const newImg = document.createElement('img');
     newImg.src = list[i + 8].album.cover_medium;

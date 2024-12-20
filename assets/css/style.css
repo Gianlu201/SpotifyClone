@@ -232,6 +232,7 @@ audio#musicSource {
 
 .buttonPlayBigCard {
   z-index: 1000000;
+  background-color: #1db954;
 }
 
 .audio-container {
@@ -465,7 +466,6 @@ audio#musicSource {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 
@@ -649,4 +649,43 @@ audio#musicSource {
     font-size: 1.5vw;
   }
 
+}
+
+::-webkit-scrollbar {
+  width: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #4D4D4D; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d3d3d3;
+}
+
+.row-hover:hover {
+  background-color: #2B2727; 
+  cursor: pointer; 
+}
+
+.row-hover .track-num {
+  display: inline-block; 
+}
+
+.row-hover .play-icon {
+  display: none; 
+}
+
+.row-hover:hover .track-num {
+  display: none; 
+}
+
+.row-hover:hover .play-icon {
+  display: inline-block; 
+  font-size: 1.5rem; 
+  
 }
