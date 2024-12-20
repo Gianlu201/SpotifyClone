@@ -470,7 +470,7 @@ audio#musicSource {
 }
 
 #artistDetails {
-  background-position: center;
+  background-position: 0 40%;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -728,3 +728,12 @@ audio#musicSource {
   }
 }
 
+
+html {
+  scrollbar-width: thin;  /* Opzioni: auto, thin, none  */
+  scrollbar-color: #4D4D4D #888 ; /*  Colore del cursore (thumb) e del tracciato (track)  */
+}
+
+html:hover {
+  scrollbar-color: #d3d3d3 #4D4D4D;
+}

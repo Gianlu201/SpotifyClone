@@ -104,12 +104,16 @@ function showTracks() {
     });
 
     const newRow = document.createElement('div');
-    newRow.classList.add('row', 'p-2');
+    newRow.classList.add('row', 'p-2', 'row-hover');
 
     const newNum = document.createElement('span');
-    newNum.classList.add('col-1');
+    newNum.classList.add('col-1', 'track-num','px-3', 'align-content-center', 'mb-0');
     newNum.innerText = i + 1;
     
+    const newPlayIcon = document.createElement('span');
+    newPlayIcon.classList.add('col-1','px-3', 'align-content-center', 'mb-0', 'play-icon');
+    newPlayIcon.innerHTML = '<i class="bi bi-play-fill"></i>';
+
     const newDiv = document.createElement('a');
     newDiv.href = `album.html?id=${artistTracks[i].album.id}`;
     newDiv.classList.add('col-1');
@@ -145,21 +149,23 @@ function showTracks() {
     }
 
     const newListeners = document.createElement('span');
-    newListeners.classList.add('col-2', 'text-secondary', 'text-end', 'd-none', 'd-md-block');
+    newListeners.classList.add('col-2', 'text-secondary', 'text-end', 'd-none', 'd-lg-block');
     newListeners.innerText = artistTracks[i].rank;
 
     const newTime = document.createElement('span');
-    newTime.classList.add('col-2', 'text-secondary', 'text-end', 'd-none', 'd-md-block');
+    newTime.classList.add('col-2', 'text-secondary', 'text-end', 'd-none', 'd-lg-block');
     newTime.innerText = getTimeFormat(artistTracks[i].duration);
 
     newDiv.appendChild(newImg);
     newRow.appendChild(newNum);
+    newRow.appendChild(newPlayIcon);
     newRow.appendChild(newDiv);
     newRow.appendChild(newTitle);
     newHeartDiv.appendChild(heart);
     newRow.appendChild(newHeartDiv);
     newRow.appendChild(newListeners);
     newRow.appendChild(newTime);
+
 
     if (i >= 5) {
       newRow.setAttribute('hidden', 'true');
