@@ -10,23 +10,21 @@ const musicSource = document.getElementById('musicSource');
 const searchedList = document.getElementById('searchedList');
 const URL = 'https://striveschool-api.herokuapp.com/api/deezer/album/';
 let myAlbum;
+const btnRandomPlay = document.getElementById('randomPlay');
+
+const btnPlay = document.getElementById('btnPlay');
+const btnNext = document.getElementById('btnNext');
+
 const myHistory = [];
 
 document.addEventListener('load', init());
+
+btnRandomPlay.addEventListener('click', playRandomTrack);
 
 function init() {
   getAlbum(albumId);
   getFromLocalStorage();
   updateHistoryList();
-}
-
-class Track {
-  constructor(_preview, _title, _artist, _albumCover) {
-    this.preview = _preview;
-    this.title = _title;
-    this.artist = _artist;
-    this.albumCover = _albumCover;
-  }
 }
 
 function getFromLocalStorage() {
@@ -174,6 +172,27 @@ function getTimeFormat(val) {
   return `${min}:${sec}`;
 }
 
+function playRandomTrack() {
+  const myTrack = myAlbum.tracks.data[Math.floor(Math.random() * myAlbum.tracks.data.length)];
+
+  setPlayer(
+    myTrack.preview,
+    myTrack.title_short,
+    myTrack.artist.name,
+    myTrack.album.cover_small
+  );
+}
+
+class Track {
+  constructor(_preview, _title, _artist, _albumCover) {
+    this.preview = _preview;
+    this.title = _title;
+    this.artist = _artist;
+    this.albumCover = _albumCover;
+  }
+}
+
+
 function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
   musicSource.src = link;
@@ -181,7 +200,8 @@ function setPlayer(link, title, artist, imgUrl) {
 
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
-  document.getElementById('artistName').innerText = artist;
+  document.getElementById('nomeArtista').innerHTML = artist;
+  setPause();
 
   const myTrack = new Track(link, title, artist, imgUrl);
   myHistory.push(myTrack);
@@ -189,3 +209,27 @@ function setPlayer(link, title, artist, imgUrl) {
   updateLocalStorage();
   updateHistoryList();
 }
+
+btnPlay.addEventListener('click', () => {
+  const pause = '<i class="bi bi-pause-fill fs-1"></i>';
+  const play = '<i class="bi bi-play-fill fs-1"></i>';
+  if (btnPlay.innerHTML == play) {
+    document.getElementById('musicSource').play();
+    setPause();
+  } else if (btnPlay.innerHTML == pause) {
+    document.getElementById('musicSource').pause();
+    setPlay();
+  }
+});
+
+btnNext.addEventListener('click', playRandomTrack);
+
+function setPlay() {
+  btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
+}
+
+function setPause() {
+  btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
+}
+
+

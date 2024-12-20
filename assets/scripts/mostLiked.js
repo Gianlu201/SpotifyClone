@@ -5,6 +5,9 @@ const musicSource = document.getElementById('musicSource');
 const searchedList = document.getElementById('searchedList');
 const myHistory = [];
 
+const btnPlay = document.getElementById('btnPlay');
+const btnNext = document.getElementById('btnNext');
+
 const URL = 'https://6763e34117ec5852caea54ca.mockapi.io/playlist';
 let myTracks = [];
 
@@ -173,13 +176,46 @@ function setPlayer(link, title, artist, imgUrl) {
 
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
-  document.getElementById('artistName').innerText = artist;
+  document.getElementById('nomeArtista').innerHTML = artist;
+  setPause();
 
   const myTrack = new Track(link, title, artist, imgUrl);
   myHistory.push(myTrack);
   updateHistory(myTrack);
   updateLocalStorage();
   updateHistoryList();
+}
+
+btnPlay.addEventListener('click', () => {
+  const pause = '<i class="bi bi-pause-fill fs-1"></i>';
+  const play = '<i class="bi bi-play-fill fs-1"></i>';
+  if (btnPlay.innerHTML == play) {
+    document.getElementById('musicSource').play();
+    setPause();
+  } else if (btnPlay.innerHTML == pause) {
+    document.getElementById('musicSource').pause();
+    setPlay();
+  }
+});
+
+btnNext.addEventListener('click', playRandomTrack);
+
+function setPlay() {
+  btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
+}
+
+function setPause() {
+  btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
+}
+
+function getFromLocalStorage() {
+  const hist = JSON.parse(localStorage.getItem('history'));
+
+  if (hist) {
+    hist.forEach((element) => {
+      myHistory.push(element);
+    });
+  }
 }
 
 function getTimeFormat(val) {

@@ -348,6 +348,13 @@ audio#musicSource {
   color: white; /* Cambia il colore del testo e delle icone */
   appearance: none;
 }
+
+
+.custom-audio-player::-webkit-media-controls-play-button {
+  display: none;
+
+}
+
 .custom-audio-player::-webkit-media-controls-mute-button,
 .custom-audio-player::-webkit-media-controls-fullscreen-button {
   background-color: #181818; /* Cambia il colore dei pulsanti mute e fullscreen */
@@ -631,12 +638,29 @@ audio#musicSource {
   .card-body a {
     font-size: 2vw;
   }
+
+  .custom-audio-player, #btnShuffle, #btnRepeat {
+    display: none;
+  }
+
+  #playerBox {
+    margin-left: 10em;
+  }
+
 }
 
 @media (min-width: 576px) and (max-width: 1200px) {
   .card-title,
   .card-body a {
     font-size: 2vw;
+  }
+
+  .custom-audio-player, #btnShuffle, #btnRepeat {
+    display: none;
+  }
+
+  #playerBox {
+    margin-left: 10em;
   }
 }
 

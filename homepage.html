@@ -311,17 +311,13 @@
       </aside>
     </div>
 
-    <section id="player" class="d-flex justify-content-between">
-      <div class="left">
-        <div class="audio-container">
-          <img
-            id="trackImage"
-            src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg"
-          />
-          <div class="audio-info">
-            <h4 id="trackName">Seleziona un brano da ascoltare!</h4>
-            <p id="artistName">FALLO!</p>
-          </div>
+  <section id="player" class="d-flex justify-content-between">
+    <div class="left">
+      <div class="audio-container">
+        <img id="trackImage" src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg" />
+        <div class="audio-info">
+          <h4 id="trackName">Seleziona un brano da ascoltare!</h4>
+          <p id="nomeArtista">FALLO!</p>
         </div>
         <div class="progress-bar-container">
           <div class="progress-bar">
@@ -329,6 +325,29 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div id="playerBox" class="w-75">
+      <div id="buttonsBox" class="d-flex justify-content-center">
+        <button type="button" id="btnShuffle" class="btn">
+          <i class="bi bi-shuffle fs-5"></i>
+        </button>
+        <button type="button" id="btnBack" class="btn">
+          <i class="bi bi-skip-start-fill fs-5"></i>
+        </button>
+        <button type="button" id="btnPlay" class="btn">
+          <i class="bi bi-play-fill fs-1"></i>
+          <!-- <i class="bi bi-pause-fill fs-1"></i> -->
+        </button>
+        <button type="button" id="btnNext" class="btn">
+          <i class="bi bi-skip-end-fill fs-5"></i>
+        </button>
+        <button type="button" id="btnRepeat" class="btn">
+          <i class="bi bi-repeat fs-5"></i>
+        </button>
+      </div>
+      <audio id="musicSource" class="custom-audio-player" controls></audio>
+    </div>
 
       <audio id="musicSource" class="custom-audio-player" controls></audio>
 
