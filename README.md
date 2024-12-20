@@ -1,80 +1,83 @@
-# BuildWeekW8
-# Ricreazione della piattaforma streaming "Spotify"
+# BuildWeekW8: Ricreazione della piattaforma streaming "Spotify"
 
 ## Descrizione
 
----
+La nostra piattaforma offre un'ampia gamma di brani musicali, dalle hit del momento ai grandi successi del passato. Grazie a un'interfaccia semplice e intuitiva, puoi cercare i tuoi brani preferiti o scoprirne di nuovi, il tutto con la massima qualità audio.
 
-La nostra piattaforma offre un'ampia gamma di brani musicali, dalle hit del momento ai grandi successi del passato. Grazie ad un'interfaccia semplice e intuitiva puoi cercare i tuoi brani preferiti o scoprirne nuovi, il tutto con la massima qualità dell'audio.
-L'app si compone di 4 pagine HTML, altrettante Javascript ed un file CSS che le accomuna nel suo layout fedelmente responsive, perfettamente adatto per un uso sia mobile che desktop.
+L'app si compone di:
+- 4 pagine HTML
+- 4 file JavaScript
+- 1 file CSS condiviso, responsivo e adatto sia per dispositivi mobili che desktop.
 
-La pagina principale, **Homepage**, è suddivisa in tre sezioni principali:
+### **Homepage**
+La pagina principale è suddivisa in tre sezioni:
+- **Barra laterale sinistra:**
+  - Parte alta: pulsanti per navigare tra la homepage e la pagina di ricerca.
+  - Parte bassa: ultime ricerche effettuate.
+- **Sezione principale:**
+  - Informazioni sui brani in riproduzione.
+  - Suggerimenti e playlist raccomandate.
+- **Barra laterale destra:**
+  - Attività degli amici che segui.
 
-- Una barra laterale sinistra contenente, nella parte alta, i pulsanti per la navigazione tra la home e la pagina di ricerca e nella parte bassa le ultime ricerche effettuate.
-- Una sezione principale, che mostra le informazioni sui brani in riproduzione, insieme a suggerimenti e alcune playlist raccomandate.
-- Una barra laterale destra in cui vengono riportate le attività degli amici che segui.
+### **Pagina Artista**
+La struttura è simile alla homepage:
+- **Barra laterale sinistra:**
+  - Parte alta: pulsanti per navigare tra la homepage e la pagina di ricerca.
+  - Parte bassa: ultime ricerche effettuate.
+- **Sezione centrale:**
+  - Informazioni sull'artista selezionato (immagine, nome, numero di fan e brani popolari).
+  - Funzione di riproduzione randomica cliccando sul tasto *Play*.
+- **Barra laterale destra:**
+  - Attività degli amici che segui.
 
-La pagina **Artista** ha una struttura simile alla pagina principale, ossia:
+### **Pagina Album**
+Anche questa pagina presenta le due barre laterali e una sezione centrale con:
+- Informazioni sull'album (copertina, titolo, artista e dettagli rilevanti).
+- Elenco delle tracce.
+- Funzione di riproduzione dei brani direttamente dalla tracklist o randomicamente tramite il tasto *Play*.
 
-- Una barra laterale sinistra contenente, nella parte alta, i pulsanti per la navigazione tra la home e la pagina di ricerca e nella parte bassa le utlime ricerche effettuate.
-- Una sezione centrale che mostra le informazioni sull'artista selezionato, inclusa la sua immagine, il nome, il numero di fan e i brani popolari. 
-- Una barra laterale destra in cui vengono riportate le attività degli amici che segui.
-- Cliccando il tasto Play, verrà riprodotta randomicamente una delle canzoni dell'artista selezionato.
+### **Pagina Ricerca**
+La struttura include:
+- Una grande barra di ricerca con opzioni di filtro per album, artista o brano.
+- Una sezione sottostante con playlist consigliate.
 
-La pagina **Album** ha anch'essa le due barre laterali per navigazione e social, e nella sezione centrale sono incluse:
+### **Player Musicale**
+Ogni pagina include, nella parte inferiore, un player musicale con:
+- Funzioni di play/pause/stop.
+- Regolazione del volume.
+- Visualizzazione di informazioni come titolo del brano, artista, album, durata e copertina.
 
-- Informazioni sull'album: copertina, titolo, artista e altre informazioni rilevanti.
-- Elenco delle tracce contenute nell'album.
-- Possibilità di riproduzione dei brani cliccando direttamente sulla tracklist.
-- Cliccando il tasto Play, verrà riprodotta randomicamente una delle canzoni dell'album selezionato.
-
-La pagina **Ricerca** è strutturata con una grande barra per inserire la ricerca che si vuole effettuare, è consentito filtrare la ricerca per album, per artista o per brano, e nella sezione sottostante vengono consigliate una serie di playlist da poter cercare.
-
-Ogni pagina ha nella sezione bassa un **Player musicale** che consente all'utente di gestire e personalizzare l'esperienza di ascolto attraverso:
-
-- Funzione di play/pause/stop.
-- Regolazione dell'audio.
-- Visualizzazione di informazioni come titolo della canzone, artista, album, durata e copertina.
-
-## FUNZIONALITA' PRINCIPALI
-
----
+## Funzionalità principali
 
 - Riproduzione di brani e playlist.
-- Ricerca di brani/artisti/album.
-- Focus su un'artista per ascolto e info.
-- Focus su un singolo album per ascolto e info.
+- Ricerca di brani, artisti e album.
+- Informazioni dettagliate su artisti e album.
 - Cronologia delle ricerche.
-- Gestione dell'ascolto tramite il player musicale.
+- Controllo dell'ascolto tramite il player musicale.
 
-## TECNOLOGIE UTILIZZATE
+## Tecnologie utilizzate
 
----
+- **HTML5:** struttura delle pagine.
+- **CSS3:** stile condiviso e responsivo.
+- **JavaScript ES6:** logica applicativa e manipolazione del DOM.
+- **Bootstrap:** componenti di stile e icone.
+- **API Striveschool:** recupero dati su artisti, album e brani.
 
-- **HTML5** : struttura delle pagine.
-- **CSS3** : stile condiviso delle pagine.
-- **Javascript ES6** : funzionamento delle pagine e DOM manipulation.
-- **Bootstrap** : stile ed icone.
-- **API Striveschool** : recupero dati su artisti, album e brani.
+## Requisiti di sistema
 
-## REQUISITI DI SISTEMA
+1. Connessione a Internet.
+2. Sistema operativo compatibile.
+3. Browser consigliati: Firefox, Google Chrome.
 
----
+## Developers
 
-1. Una connessione ad Internet.
-2. Qualsiasi sistema operativo.
-3. Browser web consigliati : Firefox Mozilla - Google Chrome.
-
-## **Developers**
 - [Gianluca Di Diego](https://github.com/Gianlu201)
 - [Tommaso Di Berto Mancini](https://github.com/Tommasodibertomancini)
 - [Daniele Guicciardi Ferrusi](https://github.com/DanieleGuicciardi)
 - [Matilde Petrilli](https://github.com/matildepetrilli)
 - [Warnakulasuriya Sachidu Fernando](https://github.com/Sachidu-2001)
 
-## LICENZE
-
----
+## Licenze
 
 Questo progetto è distribuito sotto la licenza del Team 3 &copy; Corso Full-Stack FS0924.
-
