@@ -195,6 +195,8 @@ function printSuggests(list) {
       'align-items-center',
       'position-relative',
       'mb-3',
+      'me-2',
+      'px-2',
       'cardMini'
     );
 
@@ -218,6 +220,23 @@ function printSuggests(list) {
       newDiv.appendChild(newImg);
       newTitle.innerText = list[i + 1].album.title;
     }
+
+    // RESPONSIVE
+    function adjustColumnWidth() {
+      const newCols = document.querySelectorAll('.cardMini');
+      newCols.forEach((newCol) => {
+        if (window.innerWidth >= 992) {
+          newCol.style.width = 'calc(33.333% - 20px)';
+        } else if (window.innerWidth >= 576) {
+          newCol.style.width = 'calc(50% - 20px)';
+        } else {
+          newCol.style.width = 'calc(100% - 20px)';
+        }
+      });
+    }
+
+    window.addEventListener('load', adjustColumnWidth);
+    window.addEventListener('resize', adjustColumnWidth);
 
     // btn Play
     const playButton = document.createElement('button');

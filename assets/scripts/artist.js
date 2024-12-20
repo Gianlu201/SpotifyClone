@@ -109,7 +109,7 @@ function showTracks() {
     const newNum = document.createElement('span');
     newNum.classList.add('col-1');
     newNum.innerText = i + 1;
-
+    
     const newDiv = document.createElement('a');
     newDiv.href = `album.html?id=${artistTracks[i].album.id}`;
     newDiv.classList.add('col-1');

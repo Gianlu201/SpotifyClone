@@ -100,14 +100,18 @@ function showTracks() {
 
   for (let i = 0; i < myTracks.length; i++) {
     const newRow = document.createElement('div');
-    newRow.classList.add('row', 'mb-3');
+    newRow.classList.add('row', 'mb-3', 'row-hover');
 
-    const newCount = document.createElement('p');
-    newCount.classList.add('col-1', 'px-3', 'align-content-center', 'mb-0');
+    const newCount = document.createElement('span');
+    newCount.classList.add('col-1', 'px-3', 'align-content-center', 'mb-0', 'track-num');
     newCount.innerText = i + 1;
 
+    const newPlayIcon = document.createElement('span');
+    newPlayIcon.classList.add('col-1', 'px-3', 'align-content-center', 'mb-0','play-icon');
+    newPlayIcon.innerHTML = `<i class="bi bi-play-fill"></i>`;
+
     const albumDiv = document.createElement('div');
-    albumDiv.classList.add('col-5', 'd-flex');
+    albumDiv.classList.add('col-10', 'col-lg-5', 'd-flex');
 
     const newAlbumLink = document.createElement('a');
     newAlbumLink.href = `album.html?id=${myTracks[i].album_id}`;
@@ -131,11 +135,11 @@ function showTracks() {
     newArtist.href = `artistPage.html?id=${myTracks[i].artist_id}`;
 
     const newRank = document.createElement('p');
-    newRank.classList.add('col-3', 'm-0', 'align-self-center');
+    newRank.classList.add('col-3', 'm-0', 'align-self-center', 'd-none', 'd-lg-block');
     newRank.innerText = myTracks[i].rank;
 
     const newTime = document.createElement('p');
-    newTime.classList.add('col-2', 'pe-4', 'm-0', 'align-self-center');
+    newTime.classList.add('col-2', 'pe-4', 'm-0', 'align-self-center', 'd-none', 'd-lg-block');
     newTime.innerText = getTimeFormat(myTracks[i].duration);
 
     const lastDiv = document.createElement('div');
@@ -146,6 +150,7 @@ function showTracks() {
     heart.setAttribute('onclick', `deleteTrack(${myTracks[i].id})`);
 
     newRow.appendChild(newCount);
+    newRow.appendChild(newPlayIcon);
     newAlbumLink.appendChild(newAlbumImg);
     albumDiv.appendChild(newAlbumLink);
     newDiv.appendChild(newTitle);

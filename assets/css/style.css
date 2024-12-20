@@ -680,6 +680,27 @@ audio#musicSource {
 }
 
 .row-hover:hover .play-icon {
-  display: inline-block;
-  font-size: 1.5rem;
+  display: inline-block; 
+  font-size: 1.5rem; 
+  
 }
+
+.cardMini {
+  margin: 10px; /* Aggiungi spaziatura */
+}
+@media (max-width: 575.98px) {
+  .cardMini {
+    width: calc(100% - 20px); /* 1 colonna */
+  }
+}
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .cardMini {
+    width: calc(50% - 20px); /* 2 colonne */
+  }
+}
+@media (min-width: 992px) {
+  .cardMini {
+    width: calc(33.333% - 20px); /* 3 colonne */
+  }
+}
+
