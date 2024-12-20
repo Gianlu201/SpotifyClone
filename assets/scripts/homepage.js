@@ -5,6 +5,10 @@ const todayHits = document.getElementById('todayHits');
 const mood = document.getElementById('mood');
 const goodFeelings = document.getElementById('goodFeelings');
 const musicSource = document.getElementById('musicSource');
+const searchedList = document.getElementById('searchedList');
+
+const btnPlay = document.getElementById('btnPlay');
+const btnNext = document.getElementById('btnNext');
 
 const SRC_URL = 'https://striveschool-api.herokuapp.com/api/deezer/search?q=';
 const ARTIST_URL = 'https://striveschool-api.herokuapp.com/api/deezer/artist/';
@@ -17,6 +21,8 @@ const searchList = ['pink floyd', 'qeen', 'eminem', 'coldplay'];
 const searchList2 = ['pop', 'rock', 'king', 'something'];
 const searchList3 = ['red', 'blue', 'green', 'yellow'];
 const searchList4 = ['alone', 'friend', 'sunshine', 'moon'];
+
+const myHistory = [];
 
 // !START
 document.addEventListener('load', init());
@@ -33,6 +39,9 @@ function init() {
 
   mySearch = searchList4[Math.floor(Math.random() * searchList4.length)];
   searchRequest(SRC_URL, mySearch, musicList4);
+
+  getFromLocalStorage();
+  updateHistoryList();
 }
 
 async function searchRequest(URL, reserchKey, list) {
@@ -46,7 +55,6 @@ async function searchRequest(URL, reserchKey, list) {
       list.push(data.data[i]);
     }
 
-    console.log(data.data);
     switch (list) {
       case musicList:
         showPage();
@@ -66,6 +74,15 @@ async function searchRequest(URL, reserchKey, list) {
     }
   } catch (error) {
     console.log(error);
+  }
+}
+
+class Track {
+  constructor(_preview, _title, _artist, _albumCover) {
+    this.preview = _preview;
+    this.title = _title;
+    this.artist = _artist;
+    this.albumCover = _albumCover;
   }
 }
 
@@ -117,16 +134,18 @@ function printBigCard(element) {
     'btn-success',
     'rounded-5',
     'text-black',
-    'me-3'
+    'me-3',
+    'buttonPlayBigCard'
   );
   newBtnPlay.innerText = 'Play';
 
-  newBtnPlay.addEventListener('click', () => {    //funzione che fa riprodurre al btn la musica
+  newBtnPlay.addEventListener('click', (event) => {
+    event.stopPropagation(); // Previene che l'evento si propaghi alla bigCard
     setPlayer(
-      element.preview,           
-      element.title,            
-      element.artist.name,      
-      element.album.cover_small 
+      element.preview,
+      element.title,
+      element.artist.name,
+      element.album.cover_small
     );
   });
 
@@ -152,6 +171,11 @@ function printBigCard(element) {
   newRow.appendChild(newCol2);
 
   bigCard.appendChild(newRow);
+
+  bigCard.addEventListener('click', () => {
+    //funzione che permette di cliccare la BIGCARD
+    window.location.href = `album.html?id=${element.album.id}`;
+  });
 }
 
 // TODO Aggiungere spazio tra le carte
@@ -168,25 +192,22 @@ function printSuggests(list) {
   for (let i = 0; i < 6; i++) {
     const newCol = document.createElement('div');
     newCol.classList.add(
-      'col-12',
-      'col-md-6',
+      'col-sm-6',
       'col-lg-4',
       'd-flex',
       'align-items-center',
-      'position-relative', 
+      'position-relative',
       'mb-3',
-      'me-3', 
-      'bg-dark',
-      'px-3'
+      'me-2',
+      'px-2',
+      'cardMini'
     );
-  
-    newCol.style.width = 'calc(33.333% - 20px)';
-    
+
     const newDiv = document.createElement('div');
     newDiv.classList.add('me-2');
-    
+
     const newTitle = document.createElement('h6');
-  
+
     if (i % 2 != 0) {
       newDiv.classList.add('collage');
       for (let j = 0; j < 4; j++) {
@@ -202,33 +223,70 @@ function printSuggests(list) {
       newDiv.appendChild(newImg);
       newTitle.innerText = list[i + 1].album.title;
     }
-  
+
+    // RESPONSIVE
+    function adjustColumnWidth() {
+      const newCols = document.querySelectorAll('.cardMini');
+      newCols.forEach((newCol) => {
+        if (window.innerWidth >= 992) {
+          newCol.style.width = 'calc(33.333% - 20px)';
+        } else if (window.innerWidth >= 576) {
+          newCol.style.width = 'calc(50% - 20px)';
+        } else {
+          newCol.style.width = 'calc(100% - 20px)';
+        }
+      });
+    }
+
+    window.addEventListener('load', adjustColumnWidth);
+    window.addEventListener('resize', adjustColumnWidth);
+
     // btn Play
     const playButton = document.createElement('button');
     playButton.classList.add('btn', 'btn-success', 'play-button');
-    playButton.innerHTML = `<i class="bi bi-play-fill"></i>`; 
+    playButton.innerHTML = `<i class="bi bi-play-fill"></i>`;
     playButton.setAttribute(
       'onclick',
       `setPlayer("${list[i + 7].preview}", "${list[i + 7].title}", "${
         list[i + 7].artist.name
       }", "${list[i + 7].album.cover_small}")`
     );
-  
+
     newCol.appendChild(newDiv);
     newCol.appendChild(newTitle);
     newCol.appendChild(playButton);
-  
+
     suggestsBox.appendChild(newCol);
   }
-    
 }
+
+// RESPONSIVE
+// function adjustColumnWidth() {
+//   const newCols = document.querySelectorAll('.cardMini');
+//   newCols.forEach((newCol) => {
+//     if (window.innerWidth >= 992) {
+//       newCol.style.width = 'calc(33.333% - 20px)';
+//     } else if (window.innerWidth >= 576) {
+//       newCol.style.width = 'calc(50% - 20px)';
+//     } else {
+//       newCol.style.width = 'calc(100% - 20px)';
+//     }
+//   });
+// }
+
+// window.addEventListener('load', adjustColumnWidth);
+// window.addEventListener('resize', adjustColumnWidth);
 
 function printList(list, target) {
   target.innerHTML = '';
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const newCard = document.createElement('div');
-    newCard.classList.add('card', 'bg-dark', 'position-relative'); 
+    newCard.classList.add('card', 'secondCard', 'position-relative');
+
+    if (i >= 3) {
+      newCard.classList.add('hide-mobile');
+    }
 
     const newAImg = document.createElement('a');
     newAImg.href = `album.html?id=${list[i + 8].album.id}`;
@@ -264,7 +322,6 @@ function printList(list, target) {
       }", "${list[i + 8].album.cover_small}")`
     );
 
-
     newAImg.appendChild(newImg);
     newCard.appendChild(newAImg);
     newBody.appendChild(newTitle);
@@ -278,6 +335,32 @@ function printList(list, target) {
   }
 }
 
+function getTimeFormat(val) {
+  let min = 0;
+  let sec;
+
+  if (val > 60) {
+    min = Math.floor(val / 60);
+  }
+
+  sec = val - min * 60;
+  if (sec < 10) {
+    sec = '0' + sec;
+  }
+
+  return `${min}:${sec}`;
+}
+
+function playRandomTrack() {
+  const myTrack = musicList3[Math.floor(Math.random() * musicList3.length)];
+
+  setPlayer(
+    myTrack.preview,
+    myTrack.title_short,
+    myTrack.artist.name,
+    myTrack.album.cover_small
+  );
+}
 
 function setPlayer(link, title, artist, imgUrl) {
   musicSource.innerHTML = '';
@@ -286,5 +369,81 @@ function setPlayer(link, title, artist, imgUrl) {
 
   document.getElementById('trackImage').src = imgUrl;
   document.getElementById('trackName').innerText = `${title.slice(0, 16)}...`;
-  document.getElementById('artistName').innerText = artist;
+  document.getElementById('nomeArtista').innerHTML = artist;
+  setPause();
+
+  const myTrack = new Track(link, title, artist, imgUrl);
+  myHistory.push(myTrack);
+  updateHistory(myTrack);
+  updateLocalStorage();
+  updateHistoryList();
+}
+
+btnPlay.addEventListener('click', () => {
+  const pause = '<i class="bi bi-pause-fill fs-1"></i>';
+  const play = '<i class="bi bi-play-fill fs-1"></i>';
+  if (btnPlay.innerHTML == play) {
+    document.getElementById('musicSource').play();
+    setPause();
+  } else if (btnPlay.innerHTML == pause) {
+    document.getElementById('musicSource').pause();
+    setPlay();
+  }
+});
+
+btnNext.addEventListener('click', playRandomTrack);
+
+function setPlay() {
+  btnPlay.innerHTML = '<i class="bi bi-play-fill fs-1"></i>';
+}
+
+function setPause() {
+  btnPlay.innerHTML = '<i class="bi bi-pause-fill fs-1"></i>';
+}
+
+function getFromLocalStorage() {
+  const hist = JSON.parse(localStorage.getItem('history'));
+
+  if (hist) {
+    hist.forEach((element) => {
+      myHistory.push(element);
+    });
+  }
+}
+
+function updateHistory(obj) {
+  const myObj = { ...obj };
+  for (let i = 0; i < myHistory.length - 1; i++) {
+    if (
+      myHistory[i].preview === myObj.preview &&
+      myHistory[i].title === myObj.title &&
+      myHistory[i].artist === myObj.artist &&
+      myHistory[i].albumCover === myObj.albumCover
+    ) {
+      myHistory.splice(i, 1);
+    }
+  }
+
+  if (myHistory.length > 30) {
+    myHistory.shift();
+  }
+}
+
+function updateLocalStorage() {
+  localStorage.setItem('history', JSON.stringify(myHistory));
+}
+
+function updateHistoryList() {
+  searchedList.innerHTML = '';
+
+  for (let i = 0; i < myHistory.length; i++) {
+    const newLi = document.createElement('li');
+    newLi.innerText = myHistory[i].title;
+    newLi.setAttribute(
+      'onclick',
+      `setPlayer("${myHistory[i].preview}", "${myHistory[i].title}", "${myHistory[i].artist}", "${myHistory[i].albumCover}")`
+    );
+
+    searchedList.prepend(newLi);
+  }
 }
