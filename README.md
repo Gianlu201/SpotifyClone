@@ -1,4 +1,4 @@
-# BuildWeekW8: Ricreazione della piattaforma streaming "Spotify"
+# Spotify Clone
 
 ## Descrizione
 
