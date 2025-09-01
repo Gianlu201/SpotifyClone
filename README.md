@@ -10,7 +10,7 @@ L'app si compone di:
 - 5 file JavaScript
 - 1 file CSS condiviso, responsivo e adatto sia per dispositivi mobili che desktop.
 
-### **index**
+### **Homepage**
 
 La pagina principale è suddivisa in tre sezioni:
 
