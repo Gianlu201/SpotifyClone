@@ -269,7 +269,8 @@ audio#musicSource {
   width: 100%;
 }
 
-.input-container i, #btnSearch {
+.input-container i,
+#btnSearch {
   position: absolute;
   top: 50%;
   left: 5px;
@@ -349,10 +350,8 @@ audio#musicSource {
   appearance: none;
 }
 
-
 .custom-audio-player::-webkit-media-controls-play-button {
   display: none;
-
 }
 
 .custom-audio-player::-webkit-media-controls-mute-button,
@@ -364,7 +363,7 @@ audio#musicSource {
   background-color: red; /* Cambia il colore della barra temporale */
 }
 
-/* homepage cards in js */
+/* index cards in js */
 
 #bigCard {
   background: linear-gradient(45deg, black, transparent);
@@ -639,14 +638,15 @@ audio#musicSource {
     font-size: 2vw;
   }
 
-  .custom-audio-player, #btnShuffle, #btnRepeat {
+  .custom-audio-player,
+  #btnShuffle,
+  #btnRepeat {
     display: none;
   }
 
   #playerBox {
     margin-left: 10em;
   }
-
 }
 
 @media (min-width: 576px) and (max-width: 1200px) {
@@ -655,7 +655,9 @@ audio#musicSource {
     font-size: 2vw;
   }
 
-  .custom-audio-player, #btnShuffle, #btnRepeat {
+  .custom-audio-player,
+  #btnShuffle,
+  #btnRepeat {
     display: none;
   }
 
@@ -704,9 +706,8 @@ audio#musicSource {
 }
 
 .row-hover:hover .play-icon {
-  display: inline-block; 
-  font-size: 1.5rem; 
-  
+  display: inline-block;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 575.98px) {
@@ -725,12 +726,11 @@ audio#musicSource {
   }
 }
 
-
 html {
-  scrollbar-width: thin;  /* Opzioni: auto, thin, none  */
-  scrollbar-color: #4D4D4D #888 ; /*  Colore del cursore (thumb) e del tracciato (track)  */
+  scrollbar-width: thin; /* Opzioni: auto, thin, none  */
+  scrollbar-color: #4d4d4d #888; /*  Colore del cursore (thumb) e del tracciato (track)  */
 }
 
 html:hover {
-  scrollbar-color: #d3d3d3 #4D4D4D;
+  scrollbar-color: #d3d3d3 #4d4d4d;
 }

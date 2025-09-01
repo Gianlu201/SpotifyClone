@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
+      type="image/x-icon"
+    />
     <title>Spotify</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -69,7 +73,7 @@
                 <a
                   class="nav-link active p-1"
                   aria-current="page"
-                  href="homepage.html"
+                  href="index.html"
                 >
                   <i
                     class="bi bi-house-door-fill mx-2 d-block d-lg-inline mb-0"
@@ -160,7 +164,7 @@
                 aria-expanded="false"
               >
                 <img src="assets/imgs/pngwing.com.png" alt="" id="profileImg" />
-                Tommaso Di Berto Mancini
+                Gianluca Di Diego
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
                 <li>
@@ -170,7 +174,6 @@
                   <a class="dropdown-item" href="javascript:void(0)"
                     >Impostazioni</a
                   >
-
                 </li>
                 <li>
                   <hr class="dropdown-divider" />
@@ -263,7 +266,7 @@
               <img src="assets/imgs/pngwing.com.png" alt="" class="friends" />
             </div>
             <div>
-              <h6>Gianluca Di Diego</h6>
+              <h6>Tommaso Di Berto Mancini</h6>
               <span>In camera</span> •
               <span>Yumi Zouma </span>
               <p><i class="bi bi-disc"></i> EP III</p>
@@ -312,43 +315,46 @@
       </aside>
     </div>
 
-  <section id="player" class="d-flex justify-content-between">
-    <div class="left">
-      <div class="audio-container">
-        <img id="trackImage" src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg" />
-        <div class="audio-info">
-          <h4 id="trackName">Seleziona un brano da ascoltare!</h4>
-          <p id="nomeArtista">FALLO!</p>
-        </div>
-        <div class="progress-bar-container">
-          <div class="progress-bar">
-            <div class="progress-bar-filled"></div>
+    <section id="player" class="d-flex justify-content-between">
+      <div class="left">
+        <div class="audio-container">
+          <img
+            id="trackImage"
+            src="assets/imgs/283-2831404_png-50-px-circle-transparent-png.jpg"
+          />
+          <div class="audio-info">
+            <h4 id="trackName">Seleziona un brano da ascoltare!</h4>
+            <p id="nomeArtista">FALLO!</p>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar">
+              <div class="progress-bar-filled"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div id="playerBox" class="w-75">
-      <div id="buttonsBox" class="d-flex justify-content-center">
-        <button type="button" id="btnShuffle" class="btn">
-          <i class="bi bi-shuffle fs-5"></i>
-        </button>
-        <button type="button" id="btnBack" class="btn">
-          <i class="bi bi-skip-start-fill fs-5"></i>
-        </button>
-        <button type="button" id="btnPlay" class="btn">
-          <i class="bi bi-play-fill fs-1"></i>
-          <!-- <i class="bi bi-pause-fill fs-1"></i> -->
-        </button>
-        <button type="button" id="btnNext" class="btn">
-          <i class="bi bi-skip-end-fill fs-5"></i>
-        </button>
-        <button type="button" id="btnRepeat" class="btn">
-          <i class="bi bi-repeat fs-5"></i>
-        </button>
+      <div id="playerBox" class="w-75">
+        <div id="buttonsBox" class="d-flex justify-content-center">
+          <button type="button" id="btnShuffle" class="btn">
+            <i class="bi bi-shuffle fs-5"></i>
+          </button>
+          <button type="button" id="btnBack" class="btn">
+            <i class="bi bi-skip-start-fill fs-5"></i>
+          </button>
+          <button type="button" id="btnPlay" class="btn">
+            <i class="bi bi-play-fill fs-1"></i>
+            <!-- <i class="bi bi-pause-fill fs-1"></i> -->
+          </button>
+          <button type="button" id="btnNext" class="btn">
+            <i class="bi bi-skip-end-fill fs-5"></i>
+          </button>
+          <button type="button" id="btnRepeat" class="btn">
+            <i class="bi bi-repeat fs-5"></i>
+          </button>
+        </div>
+        <audio id="musicSource" class="custom-audio-player" controls></audio>
       </div>
-      <audio id="musicSource" class="custom-audio-player" controls></audio>
-    </div>
       <div class="right">
         <!-- se lo tolgo il player va a sinistra ????? -->
       </div>
@@ -359,6 +365,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/scripts/homepage.js"></script>
+    <script src="assets/scripts/index.js"></script>
   </body>
 </html>
